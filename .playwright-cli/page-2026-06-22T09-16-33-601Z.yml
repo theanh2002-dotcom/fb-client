@@ -1,0 +1,84 @@
+- generic [ref=e20]:
+  - complementary [ref=e21]:
+    - generic [ref=e23]: Ezi-Solutions
+    - generic [ref=e24]:
+      - generic [ref=e25]: Menu
+      - link "Quản lý bài viết" [ref=e26] [cursor=pointer]:
+        - /url: /manage
+        - img [ref=e27]
+        - generic [ref=e30]: Quản lý bài viết
+      - link "Hộp thoại" [active] [ref=e31] [cursor=pointer]:
+        - /url: /messages
+        - img [ref=e32]
+        - generic [ref=e34]: Hộp thoại
+      - link "Tạo bài viết" [ref=e35] [cursor=pointer]:
+        - /url: /create
+        - img [ref=e36]
+        - generic [ref=e41]: Tạo bài viết
+      - link "Kết nối Fanpage" [ref=e42] [cursor=pointer]:
+        - /url: /connect
+        - img [ref=e43]
+        - generic [ref=e46]: Kết nối Fanpage
+      - link "App Review" [ref=e47] [cursor=pointer]:
+        - /url: /review
+        - img [ref=e48]
+        - generic [ref=e52]: App Review
+    - generic [ref=e54]:
+      - paragraph [ref=e55]: Facebook Review Portal
+      - paragraph [ref=e56]: Version 1.0.0
+  - generic [ref=e57]:
+    - banner [ref=e58]:
+      - generic [ref=e60]:
+        - paragraph [ref=e61]: Central Facebook Service
+        - paragraph [ref=e62]: Meta App Review dashboard
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - combobox [ref=e65]:
+            - option "UI Review Fanpage" [selected]
+          - button "Tải lại Fanpage" [ref=e66]:
+            - img [ref=e67]
+        - generic "Chưa có API notification trong phase hiện tại" [ref=e72]:
+          - img [ref=e73]
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]: UI Reviewer
+            - generic [ref=e79]: ui-review@local
+          - generic [ref=e80]: U
+          - button "Đăng xuất" [ref=e81]:
+            - img [ref=e82]
+    - main [ref=e85]:
+      - generic [ref=e201]:
+        - generic [ref=e202]:
+          - generic [ref=e203]:
+            - generic [ref=e204]:
+              - generic [ref=e205]:
+                - heading "Hộp thoại" [level=1] [ref=e206]
+                - paragraph [ref=e207]: UI Review Fanpage
+              - button "Tải lại hội thoại" [ref=e208]:
+                - img [ref=e209]
+            - generic [ref=e214]:
+              - img [ref=e215]
+              - textbox "Tìm kiếm hội thoại..." [ref=e219]
+          - generic [ref=e221]: Chưa có hội thoại nào. Tin nhắn inbound từ webhook sẽ xuất hiện tại đây.
+        - generic [ref=e222]:
+          - generic [ref=e223]:
+            - generic [ref=e224]:
+              - generic [ref=e225]: "?"
+              - generic [ref=e226]:
+                - paragraph [ref=e227]: Chưa chọn hội thoại
+                - paragraph [ref=e228]: Chọn hội thoại bên trái
+            - button "Tải lại tin nhắn" [disabled] [ref=e229]:
+              - img [ref=e230]
+          - generic [ref=e236]: Chọn một hội thoại để xem tin nhắn.
+          - generic [ref=e237]:
+            - generic [ref=e238]:
+              - button "Text" [ref=e239]
+              - button "Image URL" [ref=e240]:
+                - generic [ref=e241]:
+                  - img [ref=e242]
+                  - text: Image URL
+            - generic [ref=e246]:
+              - textbox "Nhập tin nhắn..." [disabled] [ref=e247]
+              - button "Gửi" [disabled] [ref=e248]:
+                - img [ref=e249]
+                - generic [ref=e252]: Gửi

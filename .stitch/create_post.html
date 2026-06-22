@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ezitalent - Tạo Bài viết</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#0058be",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#311300",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "text-secondary": "#64748B",
+                        "state-hover": "#F1F5F9",
+                        "secondary-fixed": "#d4e3ff",
+                        "on-surface": "#111c2d",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#ffc9a8",
+                        "tertiary-container": "#924700",
+                        "surface-container-highest": "#d8e3fb",
+                        "surface-container-low": "#f0f3ff",
+                        "surface": "#f9f9ff",
+                        "surface-container-high": "#dee8ff",
+                        "surface-variant": "#d8e3fb",
+                        "surface-bright": "#f9f9ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "text-accent": "#3B82F6",
+                        "on-primary-fixed": "#001a42",
+                        "surface-base": "#F8FAFC",
+                        "primary": "#004191",
+                        "outline": "#727784",
+                        "tertiary-fixed": "#ffdcc7",
+                        "surface-muted": "#FFFFFF",
+                        "secondary": "#505f76",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#b8c7e2",
+                        "on-secondary-container": "#56657c",
+                        "text-primary": "#1E293B",
+                        "surface-container": "#e7eeff",
+                        "background": "#f9f9ff",
+                        "tertiary": "#6e3400",
+                        "on-secondary-fixed": "#0c1c30",
+                        "on-surface-variant": "#424753",
+                        "inverse-primary": "#adc6ff",
+                        "surface-dim": "#cfdaf2",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#c4d5ff",
+                        "on-error-container": "#93000a",
+                        "on-background": "#111c2d",
+                        "border-base": "#E2E8F0",
+                        "outline-variant": "#c2c6d5",
+                        "surface-tint": "#085ac0",
+                        "on-secondary-fixed-variant": "#39485e",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#d4e3ff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#263143",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "primary-fixed": "#d8e2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "space-2": "8px",
+                        "header-height": "64px",
+                        "space-6": "48px",
+                        "sidebar-width": "240px",
+                        "unit": "4px",
+                        "space-4": "24px",
+                        "margin-desktop": "32px",
+                        "space-5": "32px",
+                        "space-3": "16px",
+                        "margin-mobile": "16px",
+                        "sidebar-collapsed": "64px",
+                        "space-1": "4px"
+                    },
+                    "fontFamily": {
+                        "display-2xl": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-xl": ["Inter"],
+                        "label-xs": ["Inter"],
+                        "display-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-xl": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-xs": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "display-lg-mobile": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .sidebar-item-active {
+            @apply text-text-accent font-semibold bg-state-hover;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface-base text-text-primary">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-muted border-r border-border-base flex flex-col py-space-4 px-space-2 gap-space-1 z-50">
+<div class="flex items-center gap-3 px-space-2 mb-space-5">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary font-bold">e</div>
+<div>
+<h1 class="font-display-lg text-display-lg font-bold text-primary leading-none">ezitalent</h1>
+<p class="text-[10px] text-text-secondary uppercase tracking-wider">Management Portal</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Tổng quan</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inbox">inbox</span>
+<span class="font-body-md text-body-md">Hộp thoại (Inbox)</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+<span class="font-body-md text-body-md">Quản lý Bài viết</span>
+</a>
+<!-- Active State for Create Post -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-accent font-semibold bg-state-hover border-l-4 border-text-accent" href="#">
+<span class="material-symbols-outlined" data-icon="add_box" style="font-variation-settings: 'FILL' 1;">add_box</span>
+<span class="font-body-md text-body-md">Tạo Bài viết</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-body-md text-body-md">Kết nối Fanpage</span>
+</a>
+</nav>
+<div class="mt-auto pt-space-4 border-t border-border-base flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Cài đặt</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md text-body-md">Đăng xuất</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-sidebar-width min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="h-header-height bg-surface-muted border-b border-border-base flex justify-between items-center px-space-4 sticky top-0 z-40">
+<div class="flex items-center flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary text-lg" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-base border border-border-base rounded-lg text-body-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-text-accent transition-all" placeholder="Tìm kiếm nội dung..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-space-4">
+<button class="p-2 text-text-secondary hover:bg-state-hover rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full border-2 border-surface-muted"></span>
+</button>
+<button class="p-2 text-text-secondary hover:bg-state-hover rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-border-base mx-1"></div>
+<div class="flex items-center gap-3 pl-2 cursor-pointer group">
+<div class="text-right">
+<p class="text-body-md font-semibold leading-tight group-hover:text-text-accent transition-colors">Hoàng Văn Bảo</p>
+<p class="text-label-xs text-text-secondary uppercase tracking-tighter">Content Manager</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-border-base object-cover" data-alt="A professional headshot of a young male Vietnamese content manager with a friendly expression, wearing a smart casual blazer. The background is a clean, modern office environment with soft natural lighting, reflecting a professional and tech-savvy persona aligned with a corporate social media management platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYKI3bUuTPETNfnfX4t_h2D-w7Jyf5Lx_ryk3v6ZCq1005Jr3XcWssYkP62ygQ__D9NW45LpK-hVSvd1Rib_7e9t7uKKBVaP5vXCY8_o7ANMXc6TdPwg0QTlr-G0j0vgYMJmx2iuLhTEVT3IrXFZmFqCjykRaHBvkz0X4necXtuGJCy354CuRiYJ0ntrqaNy-jUCkx7GbdGKg-NbaKhi7_nImSAE07Z8hTGGb1p7R9wGzXsxGEAxplXYZoCURptquhi8LR9pt6jMaf"/>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-space-6 flex flex-col gap-gutter max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Composer -->
+<section class="col-span-12 lg:col-span-7 flex flex-col gap-space-4">
+<div class="flex justify-between items-center mb-2">
+<h2 class="font-display-xl text-display-xl text-text-primary">Tạo bài viết mới</h2>
+<div class="flex bg-surface-container-low p-1 rounded-lg">
+<button class="px-4 py-1.5 text-body-md font-semibold bg-white shadow-sm rounded-md text-primary flex items-center gap-2 transition-all" id="platform-fb">
+<span class="material-symbols-outlined text-[18px]" data-icon="facebook" style="font-variation-settings: 'FILL' 1;">face_nod</span>
+                                Facebook
+                            </button>
+<button class="px-4 py-1.5 text-body-md font-medium text-text-secondary hover:text-text-primary flex items-center gap-2 transition-all" id="platform-ig">
+<span class="material-symbols-outlined text-[18px]" data-icon="photo_camera">photo_camera</span>
+                                Instagram
+                            </button>
+</div>
+</div>
+<!-- Composer Card -->
+<div class="bg-surface-muted border border-border-base rounded-xl shadow-sm overflow-hidden">
+<div class="p-space-4 border-b border-border-base bg-surface-base/50 flex items-center justify-between">
+<div class="flex gap-4">
+<button class="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xl" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+<span class="text-label-xs font-semibold uppercase">Cảm xúc</span>
+</button>
+<button class="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xl" data-icon="location_on">location_on</span>
+<span class="text-label-xs font-semibold uppercase">Vị trí</span>
+</button>
+<button class="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xl" data-icon="alternate_email">alternate_email</span>
+<span class="text-label-xs font-semibold uppercase">Nhắc tên</span>
+</button>
+</div>
+<span class="text-label-xs text-text-secondary font-medium tracking-wide" id="char-count">0 / 2000</span>
+</div>
+<textarea class="w-full p-space-4 border-none focus:ring-0 text-body-md resize-none placeholder:text-text-secondary/50" id="composer-text" oninput="updatePreview(this.value)" placeholder="Bạn đang nghĩ gì?" rows="8"></textarea>
+<!-- Media Upload -->
+<div class="p-space-4 bg-surface-base/30">
+<div class="border-2 border-dashed border-border-base rounded-xl p-space-6 flex flex-col items-center justify-center gap-2 hover:border-text-accent hover:bg-surface-container-lowest transition-all cursor-pointer group">
+<div class="w-12 h-12 bg-surface-container rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<p class="font-body-md text-text-primary font-medium">Kéo và thả hoặc chọn tệp (JPG, PNG, MP4)</p>
+<p class="text-label-xs text-text-secondary">Dung lượng tối đa 50MB cho video và 5MB cho ảnh</p>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex items-center justify-between mt-space-2">
+<button class="px-6 py-2.5 rounded-lg border border-transparent text-text-secondary hover:bg-state-hover font-semibold transition-all">Lưu nháp</button>
+<div class="flex gap-space-3">
+<button class="px-6 py-2.5 rounded-lg border border-border-base text-text-primary hover:bg-surface-container-low font-semibold transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="event">event</span>
+                                Lên lịch
+                            </button>
+<button class="px-8 py-2.5 rounded-lg bg-primary text-on-primary hover:bg-primary-container font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all">
+                                Đăng bài
+                            </button>
+</div>
+</div>
+</section>
+<!-- Right Column: Live Preview -->
+<aside class="col-span-12 lg:col-span-5 flex flex-col gap-space-4 lg:sticky lg:top-24">
+<div class="flex items-center justify-between">
+<h3 class="font-display-lg text-display-lg-mobile text-text-primary">Xem trước (Facebook)</h3>
+<span class="px-2 py-1 bg-surface-container-high text-primary rounded text-[11px] font-bold uppercase tracking-widest">Live View</span>
+</div>
+<!-- Facebook Preview Card -->
+<div class="bg-white border border-[#E5E7EB] rounded-xl shadow-md overflow-hidden max-w-[500px] mx-auto w-full">
+<!-- Post Header -->
+<div class="p-3 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A small circular avatar icon showing the same male professional from the earlier image. He is smiling warmly, set against a blurred soft-blue background. The image should be sharp and fit a social media profile circle context with high-end lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCngx0X5Y1QISqC8MZ_hn0-nUKhrgEjk5V3DJBv7y0Tz3vdu0afTiqYivGZRgXMK8fFBidhSPdI9cUAqCmMST0vM5smEKSZKZvvQ6xCrfJ6Kf-PVJIvZng9-zdAksMU9lL6-G8H26sYU8gIa9zgrsG_Z1MmaYvLC3ehy110UhLy3QX8PNl7knLWh5BHaxTbIyn8iKhpsNQQkuWUgomMKkxy_oZXgKvkNWkyqIq4xgsUrBBctVtrYKOpdDMj3-LgSfkkSUh6jps6u5CF"/>
+<div>
+<h4 class="text-[14px] font-bold text-[#050505] leading-tight">Hoàng Văn Bảo</h4>
+<div class="flex items-center gap-1 text-[12px] text-[#65676B]">
+<span>Vừa xong</span>
+<span>·</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="public">public</span>
+</div>
+</div>
+</div>
+<button class="text-[#65676B] hover:bg-[#F2F3F5] p-1.5 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+<!-- Post Content -->
+<div class="px-3 pb-3">
+<p class="text-[14px] text-[#050505] leading-normal whitespace-pre-wrap break-words min-h-[20px]" id="preview-text">Bạn đang nghĩ gì?</p>
+</div>
+<!-- Media Placeholder -->
+<div class="relative aspect-video bg-[#F0F2F5] flex items-center justify-center overflow-hidden">
+<div class="flex flex-col items-center text-[#65676B] gap-2">
+<span class="material-symbols-outlined text-4xl opacity-20" data-icon="image">image</span>
+<p class="text-label-xs font-medium opacity-50 uppercase tracking-widest">Nội dung hình ảnh</p>
+</div>
+<!-- Subtle Shader Layer for atmosphere -->
+<div class="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay">
+<div class="w-full h-full bg-gradient-to-tr from-primary/10 to-transparent"></div>
+</div>
+</div>
+<!-- Interaction Stats -->
+<div class="px-3 py-2.5 flex items-center justify-between border-b border-[#CED0D4] mx-3">
+<div class="flex items-center gap-1">
+<div class="flex -space-x-1">
+<div class="w-4 h-4 rounded-full bg-[#1877F2] flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[10px] text-white" data-icon="thumb_up" style="font-variation-settings: 'FILL' 1;">thumb_up</span>
+</div>
+<div class="w-4 h-4 rounded-full bg-[#FA383E] flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<span class="text-[13px] text-[#65676B]">0</span>
+</div>
+<div class="flex gap-2 text-[13px] text-[#65676B]">
+<span>0 bình luận</span>
+<span>0 lượt chia sẻ</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="px-3 py-1 flex items-center">
+<button class="flex-1 flex items-center justify-center gap-2 py-1.5 rounded-md text-[#65676B] font-semibold hover:bg-[#F2F3F5] transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="thumb_up">thumb_up</span>
+                                Thích
+                            </button>
+<button class="flex-1 flex items-center justify-center gap-2 py-1.5 rounded-md text-[#65676B] font-semibold hover:bg-[#F2F3F5] transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="chat_bubble_outline">chat_bubble_outline</span>
+                                Bình luận
+                            </button>
+<button class="flex-1 flex items-center justify-center gap-2 py-1.5 rounded-md text-[#65676B] font-semibold hover:bg-[#F2F3F5] transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="share">share</span>
+                                Chia sẻ
+                            </button>
+</div>
+</div>
+<!-- Platform switching tip -->
+<div class="bg-surface-container/50 rounded-xl p-space-4 border border-border-base">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<div>
+<p class="font-body-md font-semibold text-text-primary">Mẹo tối ưu</p>
+<p class="text-body-sm text-text-secondary mt-1">Sử dụng ít nhất 3 thẻ hashtag để tăng phạm vi tiếp cận tự nhiên cho bài viết của bạn trên Facebook.</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<script>
+        function updatePreview(text) {
+            const previewText = document.getElementById('preview-text');
+            const charCount = document.getElementById('char-count');
+            
+            if (text.trim() === '') {
+                previewText.innerText = 'Bạn đang nghĩ gì?';
+                previewText.classList.add('text-text-secondary/50');
+            } else {
+                previewText.innerText = text;
+                previewText.classList.remove('text-text-secondary/50');
+            }
+            
+            charCount.innerText = `${text.length} / 2000`;
+            
+            if (text.length > 1800) {
+                charCount.classList.add('text-error');
+            } else {
+                charCount.classList.remove('text-error');
+            }
+        }
+
+        // Simple tab switching for platforms
+        const fbBtn = document.getElementById('platform-fb');
+        const igBtn = document.getElementById('platform-ig');
+        
+        fbBtn.addEventListener('click', () => {
+            fbBtn.className = "px-4 py-1.5 text-body-md font-semibold bg-white shadow-sm rounded-md text-primary flex items-center gap-2 transition-all";
+            igBtn.className = "px-4 py-1.5 text-body-md font-medium text-text-secondary hover:text-text-primary flex items-center gap-2 transition-all";
+        });
+        
+        igBtn.addEventListener('click', () => {
+            igBtn.className = "px-4 py-1.5 text-body-md font-semibold bg-white shadow-sm rounded-md text-primary flex items-center gap-2 transition-all";
+            fbBtn.className = "px-4 py-1.5 text-body-md font-medium text-text-secondary hover:text-text-primary flex items-center gap-2 transition-all";
+        });
+    </script>
+</body></html>

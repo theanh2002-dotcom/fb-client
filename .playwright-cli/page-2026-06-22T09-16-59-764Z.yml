@@ -1,0 +1,91 @@
+- generic [ref=e20]:
+  - complementary [ref=e21]:
+    - generic [ref=e23]: Ezi-Solutions
+    - generic [ref=e24]:
+      - generic [ref=e25]: Menu
+      - link "Quản lý bài viết" [ref=e26] [cursor=pointer]:
+        - /url: /manage
+        - img [ref=e27]
+        - generic [ref=e30]: Quản lý bài viết
+      - link "Hộp thoại" [ref=e31] [cursor=pointer]:
+        - /url: /messages
+        - img [ref=e32]
+        - generic [ref=e34]: Hộp thoại
+      - link "Tạo bài viết" [ref=e35] [cursor=pointer]:
+        - /url: /create
+        - img [ref=e36]
+        - generic [ref=e41]: Tạo bài viết
+      - link "Kết nối Fanpage" [active] [ref=e42] [cursor=pointer]:
+        - /url: /connect
+        - img [ref=e43]
+        - generic [ref=e46]: Kết nối Fanpage
+      - link "App Review" [ref=e47] [cursor=pointer]:
+        - /url: /review
+        - img [ref=e48]
+        - generic [ref=e52]: App Review
+    - generic [ref=e54]:
+      - paragraph [ref=e55]: Facebook Review Portal
+      - paragraph [ref=e56]: Version 1.0.0
+  - generic [ref=e57]:
+    - banner [ref=e58]:
+      - generic [ref=e60]:
+        - paragraph [ref=e61]: Central Facebook Service
+        - paragraph [ref=e62]: Meta App Review dashboard
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - combobox [ref=e65]:
+            - option "UI Review Fanpage" [selected]
+          - button "Tải lại Fanpage" [ref=e66]:
+            - img [ref=e67]
+        - generic "Chưa có API notification trong phase hiện tại" [ref=e72]:
+          - img [ref=e73]
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]: UI Reviewer
+            - generic [ref=e79]: ui-review@local
+          - generic [ref=e80]: U
+          - button "Đăng xuất" [ref=e81]:
+            - img [ref=e82]
+    - main [ref=e85]:
+      - generic [ref=e253]:
+        - generic [ref=e254]:
+          - generic [ref=e255]:
+            - img [ref=e257]
+            - heading "Kết nối Fanpage Facebook" [level=1] [ref=e260]
+            - paragraph [ref=e261]: Đăng nhập Facebook để backend exchange OAuth code, lưu token đã mã hóa, subscribe webhook và đưa Fanpage vào dashboard.
+            - generic [ref=e262]:
+              - button "Kết nối với Facebook" [ref=e263]:
+                - img [ref=e264]
+                - text: Kết nối với Facebook
+              - button "Tải lại danh sách" [ref=e268]:
+                - img [ref=e269]
+                - text: Tải lại danh sách
+          - generic [ref=e274]:
+            - heading "Kết nối thủ công" [level=2] [ref=e275]
+            - paragraph [ref=e276]: Dùng khi cần debug flow cũ với user access token. Không dùng cho reviewer nếu OAuth hoạt động ổn định.
+            - textbox "Paste user access token..." [ref=e277]
+            - button "Kết nối thủ công" [ref=e278]
+        - generic [ref=e279]:
+          - generic [ref=e280]:
+            - heading "Các trang đã kết nối" [level=2] [ref=e281]
+            - generic [ref=e282]:
+              - img [ref=e283]
+              - text: 1 trang
+          - article [ref=e286]:
+            - generic [ref=e287]:
+              - generic [ref=e288]:
+                - heading "UI Review Fanpage" [level=3] [ref=e289]
+                - paragraph [ref=e290]: Local UI
+              - generic [ref=e291]: ACTIVE
+            - generic [ref=e292]:
+              - generic [ref=e293]:
+                - generic [ref=e294]: Facebook Page ID
+                - generic [ref=e295]: ui-review-page
+              - generic [ref=e296]:
+                - generic [ref=e297]: Webhook
+                - generic [ref=e298]: Subscribed
+            - generic [ref=e299]:
+              - button "Đang chọn" [ref=e300]
+              - button "Disconnect" [ref=e301]:
+                - img [ref=e302]
+                - text: Disconnect

@@ -1,0 +1,18 @@
+- generic [ref=e4]:
+  - generic [ref=e5]:
+    - generic [ref=e8]: Ezi
+    - heading "Facebook Review Login" [level=1] [ref=e9]
+    - paragraph [ref=e10]: Đăng nhập bằng tài khoản demo reviewer
+  - generic [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]: Demo Email
+      - textbox "Demo Email" [ref=e14]:
+        - /placeholder: reviewer@ezisolutions.tech
+        - text: reviewer@ezisolutions.tech
+    - generic [ref=e15]:
+      - generic [ref=e16]: Demo Password
+      - textbox "Demo Password" [ref=e17]:
+        - /placeholder: reviewer-password
+        - text: reviewer-password
+    - button "Login to Dashboard" [ref=e18]
+    - button "Bỏ qua đăng nhập để kiểm tra giao diện" [ref=e19]

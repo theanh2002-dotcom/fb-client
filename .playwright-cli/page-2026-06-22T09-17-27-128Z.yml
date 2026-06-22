@@ -1,0 +1,103 @@
+- generic [ref=e20]:
+  - complementary [ref=e21]:
+    - generic [ref=e23]: Ezi-Solutions
+    - generic [ref=e24]:
+      - generic [ref=e25]: Menu
+      - link "Quản lý bài viết" [ref=e26] [cursor=pointer]:
+        - /url: /manage
+        - img [ref=e27]
+        - generic [ref=e30]: Quản lý bài viết
+      - link "Hộp thoại" [ref=e31] [cursor=pointer]:
+        - /url: /messages
+        - img [ref=e32]
+        - generic [ref=e34]: Hộp thoại
+      - link "Tạo bài viết" [ref=e35] [cursor=pointer]:
+        - /url: /create
+        - img [ref=e36]
+        - generic [ref=e41]: Tạo bài viết
+      - link "Kết nối Fanpage" [ref=e42] [cursor=pointer]:
+        - /url: /connect
+        - img [ref=e43]
+        - generic [ref=e46]: Kết nối Fanpage
+      - link "App Review" [active] [ref=e47] [cursor=pointer]:
+        - /url: /review
+        - img [ref=e48]
+        - generic [ref=e52]: App Review
+    - generic [ref=e54]:
+      - paragraph [ref=e55]: Facebook Review Portal
+      - paragraph [ref=e56]: Version 1.0.0
+  - generic [ref=e57]:
+    - banner [ref=e58]:
+      - generic [ref=e60]:
+        - paragraph [ref=e61]: Central Facebook Service
+        - paragraph [ref=e62]: Meta App Review dashboard
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - combobox [ref=e65]:
+            - option "UI Review Fanpage" [selected]
+          - button "Tải lại Fanpage" [ref=e66]:
+            - img [ref=e67]
+        - generic "Chưa có API notification trong phase hiện tại" [ref=e72]:
+          - img [ref=e73]
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]: UI Reviewer
+            - generic [ref=e79]: ui-review@local
+          - generic [ref=e80]: U
+          - button "Đăng xuất" [ref=e81]:
+            - img [ref=e82]
+    - main [ref=e85]:
+      - generic [ref=e305]:
+        - generic [ref=e306]:
+          - heading "App Review Tools" [level=1] [ref=e307]
+          - paragraph [ref=e308]: Màn kiểm tra các endpoint public phục vụ Meta App Review và callback data deletion.
+        - generic [ref=e309]:
+          - article [ref=e310]:
+            - generic [ref=e311]:
+              - generic [ref=e312]:
+                - img [ref=e313]
+                - heading "Privacy Policy" [level=2] [ref=e316]
+              - link "Mở endpoint" [ref=e317] [cursor=pointer]:
+                - /url: http://localhost:8081/privacy-policy
+                - text: Mở endpoint
+                - img [ref=e318]
+            - paragraph [ref=e322]: "Chế độ kiểm tra giao diện: endpoint /privacy-policy không được gọi."
+          - article [ref=e323]:
+            - generic [ref=e324]:
+              - generic [ref=e325]:
+                - img [ref=e326]
+                - heading "Data Deletion Instructions" [level=2] [ref=e329]
+              - link "Mở endpoint" [ref=e330] [cursor=pointer]:
+                - /url: http://localhost:8081/data-deletion
+                - text: Mở endpoint
+                - img [ref=e331]
+            - paragraph [ref=e335]: "Chế độ kiểm tra giao diện: endpoint /data-deletion không được gọi."
+        - button "Tải lại policy" [ref=e337]:
+          - img [ref=e338]
+          - text: Tải lại policy
+        - generic [ref=e343]:
+          - generic [ref=e344]:
+            - img [ref=e345]
+            - heading "Gửi data deletion request" [level=2] [ref=e348]
+          - paragraph [ref=e349]: "Form này gọi trực tiếp `POST /api/data-deletion` bằng JSON public, tương ứng flow test trong Postman."
+          - generic [ref=e350]:
+            - generic [ref=e351]:
+              - text: Requester email
+              - textbox "Requester email" [ref=e352]:
+                - /placeholder: reviewer@example.com
+                - text: ui-review@local
+            - generic [ref=e353]:
+              - text: Facebook user id
+              - textbox "Facebook user id" [ref=e354]:
+                - /placeholder: test-fb-user
+            - generic [ref=e355]:
+              - text: Facebook page id
+              - textbox "Facebook page id" [ref=e356]:
+                - /placeholder: Chưa chọn Fanpage
+                - text: ui-review-page
+            - generic [ref=e357]:
+              - text: Note
+              - textbox "Note" [ref=e358]: Frontend App Review data deletion test
+          - button "Gửi request" [ref=e360]:
+            - img [ref=e361]
+            - text: Gửi request

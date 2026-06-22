@@ -1,0 +1,76 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e6]: Ezi-Solutions
+    - generic [ref=e7]:
+      - generic [ref=e8]: Menu
+      - link "Quản lý bài viết" [ref=e9] [cursor=pointer]:
+        - /url: /manage
+        - img [ref=e10]
+        - generic [ref=e13]: Quản lý bài viết
+      - link "Hộp thoại" [ref=e14] [cursor=pointer]:
+        - /url: /messages
+        - img [ref=e15]
+        - generic [ref=e17]: Hộp thoại
+      - link "Tạo bài viết" [ref=e18] [cursor=pointer]:
+        - /url: /create
+        - img [ref=e19]
+        - generic [ref=e24]: Tạo bài viết
+      - link "Kết nối Fanpage" [active] [ref=e25] [cursor=pointer]:
+        - /url: /connect
+        - img [ref=e26]
+        - generic [ref=e29]: Kết nối Fanpage
+      - link "App Review" [ref=e30] [cursor=pointer]:
+        - /url: /review
+        - img [ref=e31]
+        - generic [ref=e35]: App Review
+    - generic [ref=e37]:
+      - paragraph [ref=e38]: Facebook Review Portal
+      - paragraph [ref=e39]: Version 1.0.0
+  - generic [ref=e40]:
+    - banner [ref=e41]:
+      - generic [ref=e43]:
+        - paragraph [ref=e44]: Central Facebook Service
+        - paragraph [ref=e45]: Backend chưa sẵn sàng, vẫn có thể xem giao diện
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - combobox [disabled] [ref=e48]:
+            - option "Chưa có Fanpage" [selected]
+          - button "Tải lại Fanpage" [ref=e49]:
+            - img [ref=e50]
+        - generic "Chưa có API notification trong phase hiện tại" [ref=e55]:
+          - img [ref=e56]
+        - generic [ref=e59]:
+          - generic [ref=e60]:
+            - generic [ref=e61]: Demo Reviewer
+            - generic [ref=e62]: reviewer@ezisolutions.tech
+          - generic [ref=e63]: D
+          - button "Tạo lại phiên demo" [ref=e64]:
+            - img [ref=e65]
+    - main [ref=e70]:
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - img [ref=e122]
+            - heading "Kết nối Fanpage Facebook" [level=1] [ref=e125]
+            - paragraph [ref=e126]: Đăng nhập Facebook để backend exchange OAuth code, lưu token đã mã hóa, subscribe webhook và đưa Fanpage vào dashboard.
+            - generic [ref=e127]:
+              - button "Kết nối với Facebook" [ref=e128]:
+                - img [ref=e129]
+                - text: Kết nối với Facebook
+              - button "Tải lại danh sách" [ref=e133]:
+                - img [ref=e134]
+                - text: Tải lại danh sách
+          - generic [ref=e139]:
+            - heading "Kết nối thủ công" [level=2] [ref=e140]
+            - paragraph [ref=e141]: Dùng khi cần debug flow cũ với user access token. Không dùng cho reviewer nếu OAuth hoạt động ổn định.
+            - textbox "Paste user access token..." [ref=e142]
+            - button "Kết nối thủ công" [ref=e143]
+        - generic [ref=e144]:
+          - generic [ref=e145]:
+            - heading "Các trang đã kết nối" [level=2] [ref=e146]
+            - generic [ref=e147]:
+              - img [ref=e148]
+              - text: 0 trang
+          - generic [ref=e150]:
+            - paragraph [ref=e151]: Chưa có Fanpage nào được kết nối
+            - paragraph [ref=e152]: Hãy bấm “Kết nối với Facebook” để bắt đầu.

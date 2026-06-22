@@ -1,0 +1,103 @@
+- generic [ref=e20]:
+  - complementary [ref=e21]:
+    - generic [ref=e23]: Ezi-Solutions
+    - generic [ref=e24]:
+      - generic [ref=e25]: Menu
+      - link "Quản lý bài viết" [ref=e26] [cursor=pointer]:
+        - /url: /manage
+        - img [ref=e27]
+        - generic [ref=e30]: Quản lý bài viết
+      - link "Hộp thoại" [ref=e31] [cursor=pointer]:
+        - /url: /messages
+        - img [ref=e32]
+        - generic [ref=e34]: Hộp thoại
+      - link "Tạo bài viết" [active] [ref=e35] [cursor=pointer]:
+        - /url: /create
+        - img [ref=e36]
+        - generic [ref=e41]: Tạo bài viết
+      - link "Kết nối Fanpage" [ref=e42] [cursor=pointer]:
+        - /url: /connect
+        - img [ref=e43]
+        - generic [ref=e46]: Kết nối Fanpage
+      - link "App Review" [ref=e47] [cursor=pointer]:
+        - /url: /review
+        - img [ref=e48]
+        - generic [ref=e52]: App Review
+    - generic [ref=e54]:
+      - paragraph [ref=e55]: Facebook Review Portal
+      - paragraph [ref=e56]: Version 1.0.0
+  - generic [ref=e57]:
+    - banner [ref=e58]:
+      - generic [ref=e60]:
+        - paragraph [ref=e61]: Central Facebook Service
+        - paragraph [ref=e62]: Meta App Review dashboard
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - combobox [ref=e65]:
+            - option "UI Review Fanpage" [selected]
+          - button "Tải lại Fanpage" [ref=e66]:
+            - img [ref=e67]
+        - generic "Chưa có API notification trong phase hiện tại" [ref=e72]:
+          - img [ref=e73]
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]: UI Reviewer
+            - generic [ref=e79]: ui-review@local
+          - generic [ref=e80]: U
+          - button "Đăng xuất" [ref=e81]:
+            - img [ref=e82]
+    - main [ref=e85]:
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "Tạo bài viết mới" [level=1] [ref=e142]
+              - paragraph [ref=e143]: Đăng lên UI Review Fanpage
+            - generic [ref=e144]: 0 / 63206
+          - generic [ref=e145]:
+            - textbox "Bạn muốn đăng gì lên Fanpage?" [ref=e146]
+            - generic [ref=e147]:
+              - text: URL ảnh công khai
+              - paragraph [ref=e148]: Backend phase hiện tại hỗ trợ ảnh bằng URL, mỗi dòng một URL. Facebook sẽ dùng ảnh đầu tiên để publish photo.
+              - textbox "URL ảnh công khai" [ref=e149]:
+                - /placeholder: https://your-domain.com/image.jpg
+          - generic [ref=e150]:
+            - button "Xóa nội dung" [ref=e151]
+            - button "Đăng bài" [disabled]:
+              - img
+              - text: Đăng bài
+        - complementary [ref=e152]:
+          - generic [ref=e153]:
+            - heading "Xem trước Facebook" [level=2] [ref=e154]
+            - generic [ref=e155]: Live View
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - generic [ref=e158]:
+                - generic [ref=e159]: U
+                - generic [ref=e160]:
+                  - heading "UI Review Fanpage" [level=3] [ref=e161]
+                  - generic [ref=e162]:
+                    - generic [ref=e163]: Vừa xong
+                    - generic [ref=e164]: ·
+                    - img [ref=e165]
+              - button [ref=e168]:
+                - img [ref=e169]
+            - paragraph [ref=e174]: Nội dung bài viết sẽ hiển thị ở đây.
+            - generic [ref=e176]:
+              - img [ref=e177]
+              - paragraph [ref=e181]: Chưa có ảnh
+            - generic [ref=e182]:
+              - generic [ref=e183]: 0 lượt thích
+              - generic [ref=e184]:
+                - generic [ref=e185]: 0 bình luận
+                - generic [ref=e186]: 0 chia sẻ
+            - generic [ref=e187]:
+              - button "Thích" [ref=e188]:
+                - img [ref=e189]
+                - text: Thích
+              - button "Bình luận" [ref=e191]:
+                - img [ref=e192]
+                - text: Bình luận
+              - button "Chia sẻ" [ref=e194]:
+                - img [ref=e195]
+                - text: Chia sẻ

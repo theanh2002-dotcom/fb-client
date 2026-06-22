@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ezitalent - Quản lý Bài viết</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "primary-container": "#0058be",
+                    "surface-base": "#F8FAFC",
+                    "tertiary": "#6e3400",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e7eeff",
+                    "outline": "#727784",
+                    "background": "#f9f9ff",
+                    "on-secondary-container": "#56657c",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#924700",
+                    "surface-muted": "#FFFFFF",
+                    "border-base": "#E2E8F0",
+                    "text-secondary": "#64748B",
+                    "surface-bright": "#f9f9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#0c1c30",
+                    "secondary": "#505f76",
+                    "secondary-fixed-dim": "#b8c7e2",
+                    "tertiary-fixed": "#ffdcc7",
+                    "on-primary-fixed": "#001a42",
+                    "surface": "#f9f9ff",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-tertiary-fixed-variant": "#723600",
+                    "on-secondary-fixed-variant": "#39485e",
+                    "inverse-primary": "#adc6ff",
+                    "on-primary-fixed-variant": "#004395",
+                    "surface-variant": "#d8e3fb",
+                    "on-surface-variant": "#424753",
+                    "text-primary": "#1E293B",
+                    "secondary-fixed": "#d4e3ff",
+                    "inverse-surface": "#263143",
+                    "outline-variant": "#c2c6d5",
+                    "surface-dim": "#cfdaf2",
+                    "state-hover": "#F1F5F9",
+                    "text-accent": "#3B82F6",
+                    "surface-container-highest": "#d8e3fb",
+                    "tertiary-fixed-dim": "#ffb786",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#ffc9a8",
+                    "surface-container-high": "#dee8ff",
+                    "on-tertiary-fixed": "#311300",
+                    "primary": "#004191",
+                    "surface-container-low": "#f0f3ff",
+                    "error": "#ba1a1a",
+                    "on-background": "#111c2d",
+                    "on-error": "#ffffff",
+                    "secondary-container": "#d4e3ff",
+                    "inverse-on-surface": "#ecf1ff",
+                    "primary-fixed": "#d8e2ff",
+                    "on-primary-container": "#c4d5ff",
+                    "surface-tint": "#085ac0",
+                    "on-surface": "#111c2d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar-width": "240px",
+                    "space-4": "24px",
+                    "sidebar-collapsed": "64px",
+                    "space-2": "8px",
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "space-1": "4px",
+                    "header-height": "64px",
+                    "gutter": "24px",
+                    "space-6": "48px",
+                    "margin-desktop": "32px",
+                    "space-5": "32px",
+                    "space-3": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-xs": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-xl": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "display-2xl": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-xs": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-xl": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display-lg-mobile": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-2xl": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; color: #1E293B; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { color: #3B82F6; font-weight: 600; background-color: #F1F5F9; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface-base">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-sidebar-width bg-surface-muted border-r border-border-base flex flex-col py-space-4 px-space-2 gap-space-1 z-50">
+<div class="px-space-2 mb-space-6">
+<h1 class="font-display-lg text-display-lg font-bold text-primary">ezitalent</h1>
+<p class="text-text-secondary text-body-sm">Management Portal</p>
+</div>
+<nav class="flex-1 flex flex-col gap-space-1">
+<a class="flex items-center gap-space-3 py-space-2 px-space-3 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-body-md">Tổng quan</span>
+</a>
+<a class="flex items-center gap-space-3 py-space-2 px-space-3 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">inbox</span>
+<span class="text-body-md">Hộp thoại (Inbox)</span>
+</a>
+<a class="flex items-center gap-space-3 py-space-2 px-space-3 rounded-lg text-text-accent font-semibold bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">article</span>
+<span class="text-body-md">Quản lý Bài viết</span>
+</a>
+<a class="flex items-center gap-space-3 py-space-2 px-space-3 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">add_box</span>
+<span class="text-body-md">Tạo Bài viết</span>
+</a>
+<a class="flex items-center gap-space-3 py-space-2 px-space-3 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="text-body-md">Kết nối Fanpage</span>
+</a>
+</nav>
+<div class="border-t border-border-base pt-space-4 flex flex-col gap-space-1">
+<a class="flex items-center gap-space-3 py-space-2 px-space-3 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-body-md">Cài đặt</span>
+</a>
+<a class="flex items-center gap-space-3 py-space-2 px-space-3 rounded-lg text-text-secondary hover:bg-state-hover transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-body-md">Đăng xuất</span>
+</a>
+</div>
+</aside>
+<!-- Main Wrapper -->
+<div class="ml-sidebar-width flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-sidebar-width h-header-height bg-surface-muted border-b border-border-base flex items-center justify-between px-space-4 z-40">
+<div class="flex items-center gap-space-3 bg-surface-container px-space-3 py-space-1 rounded-lg w-96 border border-border-base">
+<span class="material-symbols-outlined text-text-secondary">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full" placeholder="Tìm kiếm bài viết..." type="text"/>
+</div>
+<div class="flex items-center gap-space-4">
+<button class="relative p-space-1 text-text-secondary hover:bg-state-hover rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-space-1 text-text-secondary hover:bg-state-hover rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="flex items-center gap-space-2 ml-space-2 border-l border-border-base pl-space-4">
+<div class="text-right">
+<p class="text-body-md font-semibold text-text-primary">Hoàng Văn Bảo</p>
+<p class="text-label-xs text-text-secondary">Quản trị viên</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary-fixed object-cover" data-alt="Professional studio portrait of a Vietnamese man in a modern office setting, wearing a sharp blue suit, neutral soft background, high-end corporate photography style with professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKmMV7TZimMRRrBK7rkDgMjSobSJ1KSAtgiTRXggDqQZs4Ciackj2Pz1HZDYKOsGVuCdPaOWc9cQamOCllZFZPN4hmeqJt-sM0_9GlDZVtaL8TBN2IbferO7ISnkWmxWGfKIo6T9q-fNfeV_l2kq1kELVF-bqJEAkZcOnf1ggLYDQAnj_XYXTb9p9erhSlaUJ6K5hfXADs21WE5w-C8AomupMo8V2Wka2BbF6H-wBC1-wepnBVJXKdN6iyHzjyfXqikFyLbLD6JN70"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<main class="mt-header-height p-space-5 flex-1 flex gap-gutter max-w-7xl mx-auto w-full">
+<!-- Left Side: Post Feed -->
+<div class="flex-1 space-y-space-4">
+<!-- Post Card 1 -->
+<div class="bg-surface-muted border border-border-base rounded-xl overflow-hidden shadow-sm">
+<div class="p-space-4">
+<!-- Card Header -->
+<div class="flex items-center justify-between mb-space-3">
+<div class="flex items-center gap-space-3">
+<img class="w-10 h-10 rounded-lg border border-border-base object-cover" data-alt="Logotype for ezitalent, a minimalist and professional technology brand logo featuring abstract geometric shapes in shades of deep navy and bright accent blue, clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbfBCx1p68NWqkjZYyvrAoKZagkVN44bbfgiI2kDuAifHnxsB-jMQYlnYGwiaJamfUdMo99-tdvrHY8mjc2Ih8DabViG3qTvB5aZ-2cqmNTLpje48YPuwr2naBALP_aB_pDWyHIJAoihyxI2_LIzi0Na_py2-P7xsLR5t8GmY--qoMdh6K19P9jlbx2xVDOXz9aPiomxTvotMRgO6s9aEZONMT2FWbe-j1CMcAsn2vFG4p8XVce5orPllWie1rJv1vmiGscKkLjDGD"/>
+<div>
+<h3 class="font-semibold text-text-primary text-body-md">ezitalent</h3>
+<p class="text-text-secondary text-body-sm flex items-center gap-1">
+                                        12 giờ trước • <span class="material-symbols-outlined text-[14px]">public</span>
+</p>
+</div>
+</div>
+<button class="text-text-secondary hover:bg-state-hover p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<!-- Post Content -->
+<div class="space-y-space-3 mb-space-4">
+<p class="text-body-md text-text-primary">
+                                Chào mừng bạn đến với kỷ nguyên mới của quản lý nhân tài! 🚀 <br/><br/>
+                                Tại ezitalent, chúng tôi tin rằng mỗi cá nhân đều mang trong mình một tiềm năng vô hạn. Nền tảng của chúng tôi được thiết kế để giúp các doanh nghiệp tối ưu hóa quy trình kết nối và nuôi dưỡng tài năng một cách chuyên nghiệp nhất. Hãy cùng khám phá các tính năng mới trong bản cập nhật tuần này nhé! #ezitalent #TalentManagement #HRTech
+                            </p>
+<img class="w-full h-80 object-cover rounded-lg border border-border-base" data-alt="High-quality professional lifestyle photo of a diverse team of young creative professionals collaborating in a bright, modern open-plan office. Warm natural sunlight, Scandinavian furniture, clean aesthetic, depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCzRJuEFApBmZ5I4WlSrxm8Z1ikUCSVmLdDgH1wFZzOd4QyUlg25IWmBjCYZg13HQMVDbSLa9bmCmzxGt258Wl-6SJlAziRedobioHXa55lEmLecOV4_nNORcvfDKRDgzCGssP6sH4KB1iwFvQjupKkKiyGbMy54i1aZs0wTa5tLcC_hI_x9nO5T47DbwSVy5IFJFWlJy58ztUqrc5RoEVbOITUIA1Co8oXBCiuR2laFSJOI7Q9wUVKxs5z6dYbRmnTYQICn0CbBIC"/>
+</div>
+<!-- Engagement Bar -->
+<div class="flex items-center justify-between border-t border-b border-border-base py-space-2 mb-space-4">
+<div class="flex gap-space-4">
+<button class="flex items-center gap-space-1 text-text-secondary hover:text-text-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+<span class="text-body-md font-medium">Thích (124)</span>
+</button>
+<button class="flex items-center gap-space-1 text-text-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="text-body-md font-medium">Bình luận (48)</span>
+</button>
+<button class="flex items-center gap-space-1 text-text-secondary hover:text-text-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span class="text-body-md font-medium">Chia sẻ (12)</span>
+</button>
+</div>
+<div class="flex items-center -space-x-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center border-2 border-surface-muted shadow-sm">
+<span class="material-symbols-outlined text-[12px] text-white" style="font-variation-settings: 'FILL' 1;">thumb_up</span>
+</div>
+<div class="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center border-2 border-surface-muted shadow-sm">
+<span class="material-symbols-outlined text-[12px] text-white" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+</div>
+<!-- Threaded Comments Section -->
+<div class="space-y-space-4">
+<!-- Comment 1 -->
+<div class="flex gap-space-3">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Close-up portrait of a cheerful young Vietnamese woman, Lê Minh Anh, with natural lighting, soft background, wearing casual smart clothing, friendly expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRldp-NvWug_e7dQhwOQ048AnUTT1PVfaTrHwopm489lZj9XHl3KQFfDth4adQqXKseQPh2rQZWbnHHtqmRFKXCUnfLHSNneUo-Y2P6pXFCwgnd_FRKTF9UT-jA5MNRvvVecpZ41RXaKLLZ3Pp9bWRSUISS5QzikwXKev4Pxaz2UwuFv4PDTIJ6S1c9BLCzskS_P8fcJ2m5fgnw8NpTImdK7G_5EELEgVVKAPj31MUth2NvCRxmUvrdjlqun6tkl8BsYpCNhGOxYtU"/>
+<div class="flex-1">
+<div class="bg-surface-container-low p-space-3 rounded-xl rounded-tl-none">
+<h4 class="font-semibold text-text-primary text-body-sm">Lê Minh Anh</h4>
+<p class="text-text-primary text-body-md">Sản phẩm rất tuyệt vời, giao diện thân thiện và dễ dùng quá ezitalent ơi!</p>
+</div>
+<div class="flex items-center gap-space-3 mt-1 ml-1">
+<button class="text-text-secondary text-body-sm font-semibold hover:underline">Thích</button>
+<button class="text-text-secondary text-body-sm font-semibold hover:underline">Trả lời</button>
+<button class="text-text-secondary text-body-sm font-semibold hover:underline">Ẩn</button>
+<span class="text-text-secondary text-body-sm">4 giờ trước</span>
+</div>
+<!-- Nested Reply from Support -->
+<div class="mt-space-3 flex gap-space-3">
+<img class="w-8 h-8 rounded-full object-cover border border-primary-fixed" data-alt="Professional profile picture of a young male support staff member, Hoàng Nam, in a corporate office environment, friendly and helpful smile, professional attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvt2y7Tw2bygDcneeLoaS8-uQ31RGrkhLaz3yu-poLtMjicSuitSlIHYdqhjvwZ7jPHS5CKZ06zfLVuU7ryz_OApZ8ubwm0btp0s_YpfUa_xOHpNYMgaGhG3CsZjgPf_JFZ-y2RpsbDVJsgVevDxLeEOaRXoB_y-LZUhCUvYzaPIOI-vXg8oYhHv3Z5ihFevTwXJQaLiic5BIM8lUg9VCcu_S4XgAOn4TO8Tv6rZsd18xi0mEj3ImpmpPSzhyDuIS8MmiJVlkHhPZ7"/>
+<div class="flex-1">
+<div class="bg-primary-fixed p-space-3 rounded-xl rounded-tl-none">
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-semibold text-text-primary text-body-sm">Hoàng Nam (Support)</h4>
+<span class="bg-primary text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider">Staff</span>
+</div>
+<p class="text-text-primary text-body-md">Cảm ơn bạn Minh Anh đã tin dùng ezitalent nhé. Nếu cần hỗ trợ thêm gì hãy cứ liên hệ chúng mình!</p>
+</div>
+<div class="flex items-center gap-space-3 mt-1 ml-1">
+<button class="text-text-secondary text-body-sm font-semibold hover:underline">Thích</button>
+<button class="text-text-secondary text-body-sm font-semibold hover:underline">Trả lời</button>
+<span class="text-text-secondary text-body-sm">2 giờ trước</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Comment 2 -->
+<div class="flex gap-space-3">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Portrait of a Vietnamese middle-aged professional man, Nguyễn Văn Dũng, in a business setting, confident expression, sharp attire, soft daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFsN-Y0z6DybdL5lfVRpWL12hADa9EKx7NwDvfp8rPNAmaIOaR7Ndwbu2XgIBX8yVqv3aIPeljNWAW-Pd7uZi29TaWXjTdBHCfVPCB2YInoqt1TLZVxN_rekSA9PDW5yDyTLxZv4ug6h3ObybfVsN0dON4dRRKy3H7miJoVqLqsTK7dVg0d83cA5e92ik7jTeuRn__sMUDRlMirxAvjsolIDJh74tm9Ehb48y13xUCItd3ziq7uZiQkqzdfrNtMdiZbK2Gz2K3HZ8U"/>
+<div class="flex-1">
+<div class="bg-surface-container-low p-space-3 rounded-xl rounded-tl-none">
+<h4 class="font-semibold text-text-primary text-body-sm">Nguyễn Văn Dũng</h4>
+<p class="text-text-primary text-body-md">Mình muốn tìm hiểu thêm về gói doanh nghiệp, bên mình tư vấn giúp nhé.</p>
+</div>
+<div class="flex items-center gap-space-3 mt-1 ml-1">
+<button class="text-text-secondary text-body-sm font-semibold hover:underline">Thích</button>
+<button class="text-text-secondary text-body-sm font-semibold hover:underline">Trả lời</button>
+<button class="text-text-secondary text-body-sm font-semibold hover:underline">Ẩn</button>
+<span class="text-text-secondary text-body-sm">1 giờ trước</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Comment Input -->
+<div class="mt-space-4 flex gap-space-3">
+<img class="w-8 h-8 rounded-full object-cover border border-border-base" data-alt="Avatar of the user Hoang Van Bao, professional headshot in a bright office environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtX1_S1FmBrYw8yMPxtAkh6x_VMAdzY3piprL-9sHZS1YvE8ncae7emXhxesY0Bm9ZHcB60iZ00iL0xjfFmiJ4VDGb7O2LTFbj2SZAIepUUlOAJpGhmGWAtyi4Ndw4MoVcWeU862azRa1SUplBM57j3bCrjXITe27cXX34j-xLEeAM_GqhShGHybDBPShJB7X3g8OhPqeIsQDyf51-rhA4vSmVaY8BRSAhAoNqcZofUZHKPveAak4j8QHKkH7LusKla1SGUx0TRaxW"/>
+<div class="flex-1 relative">
+<input class="w-full bg-surface-container-low border border-border-base rounded-full px-space-4 py-space-2 text-body-md focus:ring-1 focus:ring-text-accent outline-none" placeholder="Viết phản hồi..." type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-2 text-text-secondary">
+<span class="material-symbols-outlined text-[20px] cursor-pointer hover:text-text-accent">sentiment_satisfied</span>
+<span class="material-symbols-outlined text-[20px] cursor-pointer hover:text-text-accent">photo_camera</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Post Card 2 (Text Only) -->
+<div class="bg-surface-muted border border-border-base rounded-xl overflow-hidden shadow-sm">
+<div class="p-space-4">
+<div class="flex items-center justify-between mb-space-3">
+<div class="flex items-center gap-space-3">
+<img class="w-10 h-10 rounded-lg border border-border-base object-cover" data-alt="ezitalent brand logo avatar, professional and clean tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuZnasuNzVF9JbDumm_luCxcY6xLehFC3FCVcDjGpZ83ORlRUmOqu6WEcQSvJ2_84JiuTo-C7AOQR_wS78_cTgdVEhnFMvA92Tf5elQgeaH8pBcsgtWv0e88cMyCKE11D8PzgbQK3b65Vo9lqgdjGRB5O5mTtqvIX68bGxrjJvzieaDL-dbwGwLLAimn_fIfMdz4ykSOYtRnoObVR7VnWTxtsZB6EqtIUcp8DcqYVv6d_0-QiWnXBaqnF3rvt6wG4mw2tAoUtOskzl"/>
+<div>
+<h3 class="font-semibold text-text-primary text-body-md">ezitalent</h3>
+<p class="text-text-secondary text-body-sm flex items-center gap-1">
+                                        2 ngày trước • <span class="material-symbols-outlined text-[14px]">public</span>
+</p>
+</div>
+</div>
+</div>
+<p class="text-body-md text-text-primary mb-space-4">
+                            Đừng bỏ lỡ buổi Webinar: "Xây dựng Văn hóa Doanh nghiệp trong thời đại số" diễn ra vào sáng thứ 6 tới đây. Đăng ký ngay tại link bio nhé! 🔗
+                        </p>
+<div class="flex items-center justify-between border-t border-border-base pt-space-2">
+<div class="flex gap-space-4">
+<button class="flex items-center gap-space-1 text-text-secondary hover:text-text-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+<span class="text-body-md font-medium">Thích (82)</span>
+</button>
+<button class="flex items-center gap-space-1 text-text-secondary hover:text-text-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-body-md font-medium">Bình luận (15)</span>
+</button>
+<button class="flex items-center gap-space-1 text-text-secondary hover:text-text-accent transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span>
+<span class="text-body-md font-medium">Chia sẻ (4)</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Stats & Management -->
+<aside class="w-80 space-y-space-4">
+<!-- Stats Monthly Card -->
+<div class="bg-surface-muted border border-border-base rounded-xl p-space-4 shadow-sm">
+<h2 class="text-body-md font-bold text-text-primary mb-space-3 uppercase tracking-wider">Thống kê tháng này</h2>
+<div class="grid grid-cols-2 gap-space-3">
+<div class="p-space-3 bg-surface-container-low rounded-lg border border-border-base">
+<p class="text-label-xs text-text-secondary mb-1">Tổng bài viết</p>
+<p class="text-display-lg text-primary">24</p>
+<span class="text-green-600 text-[11px] font-bold">+12% vs t.trước</span>
+</div>
+<div class="p-space-3 bg-surface-container-low rounded-lg border border-border-base">
+<p class="text-label-xs text-text-secondary mb-1">Tương tác</p>
+<p class="text-display-lg text-primary">1.8k</p>
+<span class="text-green-600 text-[11px] font-bold">+5% vs t.trước</span>
+</div>
+</div>
+<div class="mt-space-4 pt-space-4 border-t border-border-base space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-body-sm text-text-secondary">Tỷ lệ phản hồi</span>
+<span class="text-body-sm font-semibold text-text-primary">98.2%</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-text-accent h-full w-[98%]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-sm text-text-secondary">Thời gian TB</span>
+<span class="text-body-sm font-semibold text-text-primary">14 phút</span>
+</div>
+</div>
+</div>
+<!-- Calendar/Upcoming -->
+<div class="bg-surface-muted border border-border-base rounded-xl p-space-4 shadow-sm">
+<div class="flex items-center justify-between mb-space-4">
+<h2 class="text-body-md font-bold text-text-primary uppercase tracking-wider">Lịch đăng bài</h2>
+<span class="material-symbols-outlined text-text-secondary text-[20px] cursor-pointer">calendar_month</span>
+</div>
+<div class="space-y-space-3">
+<div class="flex gap-space-3 p-space-2 hover:bg-state-hover rounded-lg transition-colors cursor-pointer">
+<div class="flex flex-col items-center justify-center w-12 h-12 bg-surface-container rounded border border-border-base">
+<span class="text-label-xs font-bold text-primary">T6</span>
+<span class="text-body-md font-bold">24</span>
+</div>
+<div>
+<p class="text-body-sm font-semibold text-text-primary truncate w-40">Kinh nghiệm phỏng vấn 101</p>
+<p class="text-label-xs text-text-secondary">09:00 AM • Facebook</p>
+</div>
+</div>
+<div class="flex gap-space-3 p-space-2 hover:bg-state-hover rounded-lg transition-colors cursor-pointer">
+<div class="flex flex-col items-center justify-center w-12 h-12 bg-surface-container rounded border border-border-base">
+<span class="text-label-xs font-bold text-primary">T7</span>
+<span class="text-body-md font-bold">25</span>
+</div>
+<div>
+<p class="text-body-sm font-semibold text-text-primary truncate w-40">Cập nhật xu hướng tuyển dụng</p>
+<p class="text-label-xs text-text-secondary">02:30 PM • LinkedIn</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-space-4 py-space-2 border border-border-base rounded-lg text-body-sm font-semibold text-text-secondary hover:bg-state-hover transition-colors">
+                        Xem tất cả lịch trình
+                    </button>
+</div>
+<!-- Quick Actions -->
+<div class="bg-primary-container p-space-4 rounded-xl shadow-lg relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="text-white font-bold text-body-md mb-1">Bắt đầu bài viết mới?</h3>
+<p class="text-on-primary-container text-body-sm mb-space-3">Tiếp cận hàng nghìn ứng viên tiềm năng ngay hôm nay.</p>
+<button class="bg-white text-primary px-space-4 py-space-2 rounded-lg font-bold text-body-sm flex items-center gap-2 hover:shadow-md transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]">edit_square</span>
+                            Tạo ngay
+                        </button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] text-white/10 rotate-12 group-hover:rotate-0 transition-transform duration-700">post_add</span>
+</div>
+</aside>
+</main>
+</div>
+<!-- Floating Action Button (FAB) - Suppression Logic applied as per mandate: Only on Home/Dash. 
+         But user specifically wanted 'Quản lý Bài viết', so FAB might be useful for 'Create'. 
+         However, the system rules say "SUPPRESS on details and specific screens". I will use the sidebar action instead. -->
+<script>
+        // Micro-interaction for engagement buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.classList.contains('active:scale-95')) return;
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => this.style.transform = 'scale(1)', 100);
+            });
+        });
+    </script>
+</body></html>

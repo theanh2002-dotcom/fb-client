@@ -1,0 +1,93 @@
+- generic [ref=e20]:
+  - complementary [ref=e21]:
+    - generic [ref=e23]: Ezi-Solutions
+    - generic [ref=e24]:
+      - generic [ref=e25]: Menu
+      - link "Quản lý bài viết" [ref=e26] [cursor=pointer]:
+        - /url: /manage
+        - img [ref=e27]
+        - generic [ref=e30]: Quản lý bài viết
+      - link "Hộp thoại" [ref=e31] [cursor=pointer]:
+        - /url: /messages
+        - img [ref=e32]
+        - generic [ref=e34]: Hộp thoại
+      - link "Tạo bài viết" [ref=e35] [cursor=pointer]:
+        - /url: /create
+        - img [ref=e36]
+        - generic [ref=e41]: Tạo bài viết
+      - link "Kết nối Fanpage" [ref=e42] [cursor=pointer]:
+        - /url: /connect
+        - img [ref=e43]
+        - generic [ref=e46]: Kết nối Fanpage
+      - link "App Review" [ref=e47] [cursor=pointer]:
+        - /url: /review
+        - img [ref=e48]
+        - generic [ref=e52]: App Review
+    - generic [ref=e54]:
+      - paragraph [ref=e55]: Facebook Review Portal
+      - paragraph [ref=e56]: Version 1.0.0
+  - generic [ref=e57]:
+    - banner [ref=e58]:
+      - generic [ref=e60]:
+        - paragraph [ref=e61]: Central Facebook Service
+        - paragraph [ref=e62]: Meta App Review dashboard
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - combobox [ref=e65]:
+            - option "UI Review Fanpage" [selected]
+          - button "Tải lại Fanpage" [ref=e66]:
+            - img [ref=e67]
+        - generic "Chưa có API notification trong phase hiện tại" [ref=e72]:
+          - img [ref=e73]
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]: UI Reviewer
+            - generic [ref=e79]: ui-review@local
+          - generic [ref=e80]: U
+          - button "Đăng xuất" [ref=e81]:
+            - img [ref=e82]
+    - main [ref=e85]:
+      - generic [ref=e87]:
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - heading "Quản lý bài viết" [level=1] [ref=e91]
+              - paragraph [ref=e92]: "Fanpage: UI Review Fanpage"
+            - generic [ref=e93]:
+              - button "Tải lại" [ref=e94]:
+                - img [ref=e95]
+                - text: Tải lại
+              - link "Tạo bài" [ref=e100] [cursor=pointer]:
+                - /url: /create
+                - button "Tạo bài" [ref=e101]:
+                  - img [ref=e102]
+                  - text: Tạo bài
+          - generic [ref=e105]:
+            - paragraph [ref=e106]: Chưa có bài viết nào trong hệ thống
+            - paragraph [ref=e107]: Bài đăng qua màn Tạo bài viết sẽ xuất hiện tại đây.
+        - complementary [ref=e108]:
+          - generic [ref=e109]:
+            - heading "Thống kê trong hệ thống" [level=2] [ref=e110]
+            - generic [ref=e111]:
+              - generic [ref=e112]:
+                - paragraph [ref=e113]: Tổng
+                - paragraph [ref=e114]: "0"
+              - generic [ref=e115]:
+                - paragraph [ref=e116]: Published
+                - paragraph [ref=e117]: "0"
+              - generic [ref=e118]:
+                - paragraph [ref=e119]: Failed
+                - paragraph [ref=e120]: "0"
+          - generic [ref=e121]:
+            - generic [ref=e122]:
+              - img [ref=e123]
+              - text: Scope backend hiện tại
+            - paragraph [ref=e127]: Phase App Review hiện hỗ trợ đăng bài text và ảnh bằng URL. Lịch đăng, video, reels, comment và insight chưa được expose trong API.
+          - generic [ref=e129]:
+            - heading "Tạo bài viết mới" [level=3] [ref=e130]
+            - paragraph [ref=e131]: Đăng text hoặc ảnh URL trực tiếp lên Fanpage đã chọn.
+            - link "Tạo ngay" [ref=e132] [cursor=pointer]:
+              - /url: /create
+              - button "Tạo ngay" [ref=e133]:
+                - img [ref=e134]
+                - text: Tạo ngay

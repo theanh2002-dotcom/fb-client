@@ -1,0 +1,14 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]: Ezi
+      - heading "Facebook Review Login" [level=1] [ref=e7]
+      - paragraph [ref=e8]: Dang nhap bang tai khoan demo reviewer
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - text: Demo Email
+        - textbox "Demo Email" [ref=e11]: reviewer@ezisolutions.tech
+      - generic [ref=e12]:
+        - text: Demo Password
+        - textbox "Demo Password" [ref=e13]: reviewer-password
+      - button "Login to Dashboard" [ref=e14]
