@@ -23,7 +23,7 @@ export const ManagePosts = () => {
     setIsLoading(true);
     try {
       const response = await facebookApi.listPosts(selectedPageId, page, 20);
-      setPosts(response.data);
+      setPosts(response.content || []);
       setPagination(response);
     } catch (loadError) {
       addToast(loadError instanceof Error ? loadError.message : 'Không tải được lịch sử bài viết', 'error');
@@ -40,8 +40,8 @@ export const ManagePosts = () => {
   const stats = useMemo(() => {
     const published = posts.filter((post) => post.status === 'PUBLISHED').length;
     const failed = posts.filter((post) => post.status === 'FAILED').length;
-    return { published, failed, total: pagination?.total ?? posts.length };
-  }, [pagination?.total, posts]);
+    return { published, failed, total: pagination?.totalElements ?? posts.length };
+  }, [pagination?.totalElements, posts]);
 
   return (
     <div className="flex gap-gutter w-full flex-col xl:flex-row">
@@ -111,7 +111,7 @@ export const ManagePosts = () => {
                       <div>
                         <h3 className="font-semibold text-text-primary text-body-md">{selectedPage?.pageName ?? 'Fanpage'}</h3>
                         <p className="text-text-secondary text-body-sm flex items-center gap-1">
-                          {formatDateTime(post.publishedAt)} • <span className="material-symbols-outlined text-[14px]">public</span>
+                          {formatDateTime(post.createdAt)} • <span className="material-symbols-outlined text-[14px]">public</span>
                         </p>
                       </div>
                     </div>
@@ -140,11 +140,11 @@ export const ManagePosts = () => {
                       {post.content || '(Bài viết chỉ có ảnh)'}
                     </p>
                     
-                    {post.media.length > 0 && (
+                    {(post.media || []).length > 0 && (
                       <div className="grid gap-2 sm:grid-cols-2 rounded-lg overflow-hidden border border-border-base">
-                        {post.media.map((media) => (
+                        {(post.media || []).map((media) => (
                           <a
-                            key={media.id}
+                            key={media.id || media.mediaUrl}
                             href={media.mediaUrl}
                             target="_blank"
                             rel="noreferrer"
@@ -156,13 +156,6 @@ export const ManagePosts = () => {
                       </div>
                     )}
                   </div>
-
-                  {post.errorMessage && (
-                    <div className="mb-space-3 rounded-lg bg-error-container p-3 text-body-sm text-on-error-container">
-                      <p className="font-semibold mb-1">Lỗi đăng bài:</p>
-                      {post.errorMessage}
-                    </div>
-                  )}
 
                   {/* Engagement Bar Mock */}
                   <div className="flex items-center justify-between border-t border-border-base pt-space-3 mt-space-3">
@@ -191,10 +184,10 @@ export const ManagePosts = () => {
           </div>
         )}
 
-        {pagination && pagination.last_page > 1 && (
+        {pagination && pagination.totalPages > 1 && (
           <div className="flex items-center justify-between rounded-xl border border-border-base bg-surface-muted p-4 shadow-sm mt-space-4">
             <span className="text-body-sm text-text-secondary">
-              Trang {pagination.current_page} / {pagination.last_page} · Tổng {pagination.total} bài viết
+              Trang {(pagination.number || 0) + 1} / {pagination.totalPages} · Tổng {pagination.totalElements} bài viết
             </span>
             <div className="flex gap-2">
               <button 
@@ -206,7 +199,7 @@ export const ManagePosts = () => {
               </button>
               <button 
                 className="px-space-3 py-1.5 border border-border-base rounded-lg text-body-sm font-semibold hover:bg-state-hover transition-colors disabled:opacity-50"
-                disabled={page >= pagination.last_page} 
+                disabled={page >= pagination.totalPages}
                 onClick={() => setPage((current) => current + 1)}
               >
                 Sau

@@ -5,10 +5,11 @@ export type BaseResponse<T> = {
 };
 
 export type BasePagination<T> = {
-  current_page: number;
-  data: T[];
-  last_page: number;
-  total: number;
+  content: T[];
+  number: number;
+  totalPages: number;
+  totalElements: number;
+  size: number;
 };
 
 export type AuthorizedUser = {
@@ -89,14 +90,12 @@ export type FacebookPostMedia = {
 
 export type FacebookPagePost = {
   id: string;
-  pageId: string;
   fbPostId: string | null;
   content: string;
-  status: 'PUBLISHING' | 'PUBLISHED' | 'FAILED';
-  errorMessage: string | null;
-  publishedAt: string | null;
-  createdBy: string | null;
-  media: FacebookPostMedia[];
+  linkUrl: string | null;
+  status: 'PUBLISHING' | 'PUBLISHED' | 'FAILED' | string;
+  createdAt: string | null;
+  media: FacebookPostMedia[] | null;
 };
 
 export type FacebookDisconnectPageResponse = {

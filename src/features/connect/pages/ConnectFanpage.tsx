@@ -90,7 +90,8 @@ export const ConnectFanpage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
             {pages.map((page) => {
               const isSelected = selectedPageId === page.fbPageId;
-              const hasMissingPermissions = page.missingPermissions.length > 0;
+              const missingPerms = page.missingPermissions || [];
+              const hasMissingPermissions = missingPerms.length > 0;
               return (
                 <div
                   key={page.fbPageId}
@@ -127,7 +128,7 @@ export const ConnectFanpage = () => {
                     </div>
                     {hasMissingPermissions && (
                       <div className="rounded-md bg-error-container p-2 text-xs text-on-error-container mt-1">
-                        Thiếu quyền: {page.missingPermissions.join(', ')}
+                        Thiếu quyền: {missingPerms.join(', ')}
                       </div>
                     )}
                   </div>

@@ -30,8 +30,9 @@ export const Inbox = () => {
       return conversations;
     }
     return conversations.filter((conversation) => {
-      const displayName = conversation.senderName ?? conversation.senderPsid;
-      return displayName.toLowerCase().includes(keyword) || conversation.senderPsid.toLowerCase().includes(keyword);
+      const displayName = conversation.senderName ?? conversation.senderPsid ?? 'Unknown';
+      const psidMatch = conversation.senderPsid ? conversation.senderPsid.toLowerCase().includes(keyword) : false;
+      return displayName.toLowerCase().includes(keyword) || psidMatch;
     });
   }, [conversations, search]);
 
@@ -45,12 +46,12 @@ export const Inbox = () => {
     setIsLoadingConversations(true);
     try {
       const response = await facebookApi.listConversations(selectedPageId);
-      setConversations(response.data);
+      setConversations(response.content || []);
       setSelectedConversationId((current) => {
-        if (current && response.data.some((conversation) => conversation.id === current)) {
+        if (current && (response.content || []).some((conversation) => conversation.id === current)) {
           return current;
         }
-        return response.data[0]?.id ?? null;
+        return (response.content || [])[0]?.id ?? null;
       });
     } catch (loadError) {
       addToast(loadError instanceof Error ? loadError.message : 'Không tải được hộp thoại', 'error');
@@ -68,7 +69,7 @@ export const Inbox = () => {
     setIsLoadingMessages(true);
     try {
       const response = await facebookApi.listMessages(selectedPageId, selectedConversationId);
-      setMessages(response.data);
+      setMessages(response.content || []);
     } catch (loadError) {
       addToast(loadError instanceof Error ? loadError.message : 'Không tải được tin nhắn', 'error');
     } finally {
@@ -143,7 +144,7 @@ export const Inbox = () => {
             <div className="p-space-4 text-body-sm text-text-secondary">Chưa có hội thoại nào. Tin nhắn inbound từ webhook sẽ xuất hiện tại đây.</div>
           )}
           {filteredConversations.map((conversation) => {
-            const displayName = conversation.senderName ?? conversation.senderPsid;
+            const displayName = conversation.senderName ?? conversation.senderPsid ?? 'Unknown';
             const isActive = conversation.id === selectedConversationId;
             return (
               <div

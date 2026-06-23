@@ -22,6 +22,8 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
   const headers = new Headers(options.headers);
   const token = localStorage.getItem(AUTH_TOKEN_KEY);
 
+  headers.set('ngrok-skip-browser-warning', 'true');
+
   if (!headers.has('Content-Type') && options.body !== undefined) {
     headers.set('Content-Type', 'application/json');
   }
