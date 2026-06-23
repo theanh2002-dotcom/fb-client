@@ -20,7 +20,7 @@ export const facebookApi = {
   logout: () => apiClient.post<null>('/api/auth/logout'),
   getOAuthUrl: () => apiClient.get<FacebookOAuthUrlResponse>('/api/facebook/oauth/url'),
   handleOAuthCallback: (queryString: string) =>
-    apiClient.get<FacebookOAuthExchangeResponse>(`/api/facebook/oauth/callback${queryString}`, { skipAuth: true }),
+    apiClient.get<FacebookOAuthExchangeResponse>(`/api/facebook/oauth/callback${queryString}`),
   listPages: () => apiClient.get<FacebookPage[]>('/api/pages'),
   getPage: (pageId: string) => apiClient.get<FacebookPage>(`/api/pages/${pageId}`),
   connectPage: (userAccessToken: string) =>

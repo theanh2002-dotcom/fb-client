@@ -4,6 +4,8 @@ import { Button } from '../../../components/ui/Button';
 import { facebookApi } from '../../../shared/api/facebookApi';
 import { usePages } from '../../pages/PageContext';
 
+const usedOAuthCodes = new Set<string>();
+
 export function OAuthCallback() {
   const navigate = useNavigate();
   const { refreshPages } = usePages();
@@ -14,6 +16,16 @@ export function OAuthCallback() {
     let cancelled = false;
 
     async function completeOAuth() {
+      const code = new URLSearchParams(window.location.search).get('code');
+      if (code && usedOAuthCodes.has(code)) {
+        setMessage('Ket noi Facebook da duoc xu ly. Dang chuyen ve danh sach Fanpage...');
+        setTimeout(() => navigate('/connect', { replace: true }), 900);
+        return;
+      }
+      if (code) {
+        usedOAuthCodes.add(code);
+      }
+
       try {
         const response = await facebookApi.handleOAuthCallback(window.location.search);
         await refreshPages();
