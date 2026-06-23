@@ -10,6 +10,11 @@ import { usePages } from '../../pages/PageContext';
 
 const reviewPermissions = [
   {
+    permission: 'public_profile',
+    screen: 'Login Screen',
+    evidence: 'Reviewer can login and the system retrieves basic profile info for session management.',
+  },
+  {
     permission: 'pages_show_list',
     screen: 'Connect Fanpage',
     evidence: 'Reviewer can start Facebook OAuth and select a Page returned by Facebook.',
@@ -23,6 +28,11 @@ const reviewPermissions = [
     permission: 'pages_manage_posts',
     screen: 'Create Post / Manage Posts',
     evidence: 'Reviewer can publish a text or image URL post and verify it appears in the post history.',
+  },
+  {
+    permission: 'pages_read_engagement',
+    screen: 'Manage Posts',
+    evidence: 'Reviewer can see the engagement metrics (Likes, Comments, Shares) fetched for each published post.',
   },
   {
     permission: 'pages_messaging',
@@ -102,7 +112,7 @@ export const AppReviewTools = () => {
         </p>
       </div>
 
-      <section className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+      <section className="grid gap-4">
         <article className="rounded-md border border-border-base bg-surface-container-lowest p-5 shadow-sm">
           <div className="flex items-center gap-2">
             <ClipboardList className="h-5 w-5 text-primary" />
@@ -120,26 +130,6 @@ export const AppReviewTools = () => {
           </ol>
         </article>
 
-        <article className="rounded-md border border-border-base bg-surface-container-lowest p-5 shadow-sm">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="h-5 w-5 text-primary" />
-            <h2 className="font-semibold text-text-primary">Public review URLs</h2>
-          </div>
-          <div className="mt-4 grid gap-3 text-sm">
-            <Link className="flex items-center justify-between rounded-md border border-border-base p-3 text-primary hover:bg-state-hover" to="/privacy-policy" target="_blank">
-              Privacy Policy
-              <ExternalLink className="h-4 w-4" />
-            </Link>
-            <Link className="flex items-center justify-between rounded-md border border-border-base p-3 text-primary hover:bg-state-hover" to="/data-deletion" target="_blank">
-              Data deletion page
-              <ExternalLink className="h-4 w-4" />
-            </Link>
-            <a className="flex items-center justify-between rounded-md border border-border-base p-3 text-primary hover:bg-state-hover" href={`${API_BASE_URL}/api/data-deletion`} target="_blank" rel="noreferrer">
-              Data deletion callback endpoint
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
-        </article>
       </section>
 
       <section className="rounded-md border border-border-base bg-surface-container-lowest p-5 shadow-sm">
@@ -171,15 +161,12 @@ export const AppReviewTools = () => {
               <ShieldCheck className="h-5 w-5 text-primary" />
               <h2 className="font-semibold text-text-primary">Privacy Policy</h2>
             </div>
-            <a
+            <Link
               className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-              href={`${API_BASE_URL}/privacy-policy`}
-              target="_blank"
-              rel="noreferrer"
+              to="/privacy-policy"
             >
-              Mở endpoint
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
+              Xem trang đầy đủ
+            </Link>
           </div>
           <p className="mt-4 rounded-md bg-surface-container-low p-3 text-sm text-text-secondary">
             {privacyPolicy || 'Chưa tải dữ liệu'}
@@ -192,15 +179,12 @@ export const AppReviewTools = () => {
               <FileText className="h-5 w-5 text-primary" />
               <h2 className="font-semibold text-text-primary">Data Deletion Instructions</h2>
             </div>
-            <a
+            <Link
               className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-              href={`${API_BASE_URL}/data-deletion`}
-              target="_blank"
-              rel="noreferrer"
+              to="/data-deletion"
             >
-              Mở endpoint
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
+              Xem trang đầy đủ
+            </Link>
           </div>
           <p className="mt-4 rounded-md bg-surface-container-low p-3 text-sm text-text-secondary">
             {dataDeletionInstructions || 'Chưa tải dữ liệu'}

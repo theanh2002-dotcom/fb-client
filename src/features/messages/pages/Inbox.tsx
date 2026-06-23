@@ -226,15 +226,6 @@ export const Inbox = () => {
             >
               <span className={clsx("material-symbols-outlined text-[22px]", isLoadingMessages && "animate-spin")} data-icon="refresh">refresh</span>
             </button>
-            <button className="p-2 text-text-secondary hover:text-text-accent hover:bg-state-hover rounded-lg transition-all">
-              <span className="material-symbols-outlined text-[22px]" data-icon="call">call</span>
-            </button>
-            <button className="p-2 text-text-secondary hover:text-text-accent hover:bg-state-hover rounded-lg transition-all">
-              <span className="material-symbols-outlined text-[22px]" data-icon="videocam">videocam</span>
-            </button>
-            <button className="p-2 text-text-secondary hover:text-text-accent hover:bg-state-hover rounded-lg transition-all">
-              <span className="material-symbols-outlined text-[22px]" data-icon="more_vert">more_vert</span>
-            </button>
           </div>
         </header>
 
@@ -300,32 +291,10 @@ export const Inbox = () => {
 
         {/* Chat Footer */}
         <footer className="p-space-3 bg-surface-muted border-t border-border-base flex-shrink-0">
-          <div className="mb-2 flex items-center gap-2">
-            <button
-              className={clsx('rounded-full px-3 py-1 text-[11px] font-medium transition-colors', messageType === 'TEXT' ? 'bg-primary text-white' : 'bg-surface-container hover:bg-surface-container-high')}
-              onClick={() => setMessageType('TEXT')}
-            >
-              Văn bản
-            </button>
-            <button
-              className={clsx('rounded-full px-3 py-1 text-[11px] font-medium transition-colors flex items-center gap-1', messageType === 'IMAGE' ? 'bg-primary text-white' : 'bg-surface-container hover:bg-surface-container-high')}
-              onClick={() => setMessageType('IMAGE')}
-            >
-              <span className="material-symbols-outlined text-[14px]" data-icon="image">image</span>
-              Hình ảnh
-            </button>
-          </div>
-          
           <div className="flex items-center gap-2 bg-surface-base border border-border-base rounded-xl p-1 shadow-sm focus-within:ring-2 focus-within:ring-text-accent/20 focus-within:border-text-accent transition-all">
-            <button className="p-2 text-text-secondary hover:text-text-accent transition-colors flex items-center justify-center">
-              <span className="material-symbols-outlined" data-icon="add_circle">add_circle</span>
-            </button>
-            <button className="p-2 text-text-secondary hover:text-text-accent transition-colors flex items-center justify-center">
-              <span className="material-symbols-outlined" data-icon="attach_file">attach_file</span>
-            </button>
             <textarea
-              className="flex-1 bg-transparent border-none focus:outline-none focus:ring-0 text-body-md py-2 px-1 resize-none h-10 leading-6 custom-scrollbar"
-              placeholder={messageType === 'TEXT' ? 'Nhập tin nhắn...' : 'Nhập URL ảnh công khai...'}
+              className="flex-1 bg-transparent border-none focus:outline-none focus:ring-0 text-body-md py-2 px-3 resize-none h-10 leading-6 custom-scrollbar"
+              placeholder="Nhập tin nhắn..."
               value={draft}
               onChange={(event) => setDraft(event.target.value)}
               onKeyDown={(event) => {
@@ -337,9 +306,6 @@ export const Inbox = () => {
               disabled={!selectedConversation}
               rows={1}
             />
-            <button className="p-2 text-text-secondary hover:text-text-accent transition-colors flex items-center justify-center">
-              <span className="material-symbols-outlined" data-icon="mood">mood</span>
-            </button>
             <button
               className="bg-text-accent text-white px-5 py-2 rounded-lg font-semibold text-body-sm hover:brightness-110 transition-all flex items-center gap-2 disabled:opacity-50"
               onClick={() => void handleSend()}

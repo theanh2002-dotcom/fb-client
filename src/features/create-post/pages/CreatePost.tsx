@@ -46,7 +46,7 @@ export const CreatePost = () => {
         
         {/* Left Column: Composer */}
         <section className="col-span-12 lg:col-span-7 flex flex-col gap-space-4">
-          <div className="flex justify-between items-center mb-2">
+          <div className="flex justify-between items-start min-h-[68px] mb-2">
             <div>
               <h2 className="font-display-xl text-display-xl text-text-primary">Tạo bài viết mới</h2>
               <p className="mt-1 text-sm text-text-secondary">
@@ -66,18 +66,6 @@ export const CreatePost = () => {
           <div className="bg-surface-muted border border-border-base rounded-xl shadow-sm overflow-hidden">
             <div className="p-space-4 border-b border-border-base bg-surface-base/50 flex items-center justify-between">
               <div className="flex gap-4">
-                <button className="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-xl" data-icon="sentiment_satisfied">sentiment_satisfied</span>
-                  <span className="text-label-xs font-semibold uppercase">Cảm xúc</span>
-                </button>
-                <button className="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-xl" data-icon="location_on">location_on</span>
-                  <span className="text-label-xs font-semibold uppercase">Vị trí</span>
-                </button>
-                <button className="text-text-secondary hover:text-text-primary transition-colors flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-xl" data-icon="alternate_email">alternate_email</span>
-                  <span className="text-label-xs font-semibold uppercase">Nhắc tên</span>
-                </button>
               </div>
               <span className={clsx("text-label-xs font-medium tracking-wide", content.length > 2000 ? "text-error" : "text-text-secondary")}>
                 {content.length} / 2000
@@ -92,18 +80,7 @@ export const CreatePost = () => {
               onChange={(e) => setContent(e.target.value)}
             />
 
-            {/* Media Upload Area */}
-            <div className="border-t border-border-base p-space-4 bg-surface-container-low">
-              <label className="text-sm font-medium text-text-primary mb-2 block">
-                URL ảnh công khai
-              </label>
-              <textarea
-                className="h-24 w-full rounded-md border border-border-base bg-surface-muted p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-text-accent transition-all resize-none"
-                value={imageUrlsText}
-                onChange={(event) => setImageUrlsText(event.target.value)}
-                placeholder="Nhập URL ảnh (mỗi dòng một URL)..."
-              />
-            </div>
+
           </div>
 
 
@@ -118,10 +95,6 @@ export const CreatePost = () => {
               Xóa nội dung
             </button>
             <div className="flex gap-space-3">
-              <button className="px-6 py-2.5 rounded-lg border border-border-base text-text-primary hover:bg-surface-container-low font-semibold transition-all flex items-center gap-2">
-                <span className="material-symbols-outlined text-[18px]" data-icon="event">event</span>
-                Lên lịch
-              </button>
               <button 
                 onClick={() => void handlePublish()} 
                 disabled={!canPublish || isPublishing}
@@ -138,9 +111,9 @@ export const CreatePost = () => {
 
         {/* Right Column: Live Preview */}
         <aside className="col-span-12 lg:col-span-5 flex flex-col gap-space-4 lg:sticky lg:top-24">
-          <div className="flex items-center justify-between">
-            <h3 className="font-display-lg text-display-lg-mobile text-text-primary">Xem trước (Facebook)</h3>
-            <span className="px-2 py-1 bg-surface-container-high text-primary rounded text-[11px] font-bold uppercase tracking-widest">Live View</span>
+          <div className="flex items-start justify-between min-h-[68px] mb-2">
+            <h3 className="font-display-lg text-display-lg-mobile text-text-primary mt-1">Xem trước (Facebook)</h3>
+            <span className="px-2 py-1 bg-surface-container-high text-primary rounded text-[11px] font-bold uppercase tracking-widest mt-1">Live View</span>
           </div>
 
           {/* Facebook Preview Card */}
@@ -172,37 +145,23 @@ export const CreatePost = () => {
               </p>
             </div>
 
-            {/* Media Placeholder */}
-            <div className="relative aspect-video bg-[#F0F2F5] flex items-center justify-center overflow-hidden">
-              {imageUrls[0] ? (
-                <img className="h-full w-full object-cover" src={imageUrls[0]} alt="Post preview" />
-              ) : (
-                <>
-                  <div className="flex flex-col items-center text-[#65676B] gap-2">
-                    <span className="material-symbols-outlined text-4xl opacity-20" data-icon="image">image</span>
-                    <p className="text-label-xs font-medium opacity-50 uppercase tracking-widest">Nội dung hình ảnh</p>
-                  </div>
-                  <div className="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay">
-                    <div className="w-full h-full bg-gradient-to-tr from-primary/10 to-transparent"></div>
-                  </div>
-                </>
-              )}
-            </div>
 
             {/* Interaction Stats */}
-            <div className="px-3 py-2.5 flex items-center justify-between border-b border-[#CED0D4] mx-3">
-              <div className="flex items-center gap-1">
+            <div className="py-2.5 flex items-center justify-between border-b border-[#CED0D4] mx-3">
+              <div className="flex items-center gap-1.5">
                 <div className="flex -space-x-1">
-                  <div className="w-4 h-4 rounded-full bg-[#1877F2] flex items-center justify-center z-10">
-                    <span className="material-symbols-outlined text-[10px] text-white" data-icon="thumb_up" style={{ fontVariationSettings: "'FILL' 1" }}>thumb_up</span>
-                  </div>
-                  <div className="w-4 h-4 rounded-full bg-[#FA383E] flex items-center justify-center">
-                    <span className="material-symbols-outlined text-[10px] text-white" data-icon="favorite" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
-                  </div>
+                  <svg viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" className="z-10 ring-1 ring-white rounded-full">
+                    <circle cx="8" cy="8" r="8" fill="#1877f2"></circle>
+                    <path d="M11.233 7.828c.321-.106.564-.403.564-.766 0-.441-.358-.802-.8-.802h-1.996l.301-1.428v-.108c0-.223-.09-.427-.235-.572L8.495 3.58 5.617 6.457A1.2 1.2 0 0 0 5.264 7.3v4.062c0 .356.29.645.645.645h4.154c.307 0 .57-.215.632-.515l.685-3.238c.023-.11.023-.22 0-.329-.028-.135-.098-.255-.2-.345l-.234-.176-.713-.236zM3.468 7.3H4.8v4.7H3.468v-4.7z" fill="#fff"></path>
+                  </svg>
+                  <svg viewBox="0 0 16 16" width="16" height="16" xmlns="http://www.w3.org/2000/svg" className="ring-1 ring-white rounded-full">
+                    <circle cx="8" cy="8" r="8" fill="#f02849"></circle>
+                    <path d="M11.666 4.707a2.531 2.531 0 0 0-3.58 0L8 4.814l-.086-.107a2.532 2.532 0 0 0-3.58 0 2.533 2.533 0 0 0 0 3.58l3.666 3.666 3.666-3.666a2.532 2.532 0 0 0 0-3.58z" fill="#fff"></path>
+                  </svg>
                 </div>
-                <span className="text-[13px] text-[#65676B]">0</span>
+                <span className="text-[14px] text-[#65676B]">0</span>
               </div>
-              <div className="flex gap-2 text-[13px] text-[#65676B]">
+              <div className="flex gap-2 text-[14px] text-[#65676B]">
                 <span>0 bình luận</span>
                 <span>0 lượt chia sẻ</span>
               </div>
