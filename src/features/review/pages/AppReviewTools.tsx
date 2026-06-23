@@ -52,8 +52,6 @@ const reviewerSteps = [
 export const AppReviewTools = () => {
   const { user } = useAuth();
   const { selectedPage } = usePages();
-  const [privacyPolicy, setPrivacyPolicy] = useState('');
-  const [dataDeletionInstructions, setDataDeletionInstructions] = useState('');
   const [requesterEmail, setRequesterEmail] = useState(user?.username ?? '');
   const [fbUserId, setFbUserId] = useState('');
   const [note, setNote] = useState('Frontend App Review data deletion test');
@@ -61,28 +59,6 @@ export const AppReviewTools = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<FacebookDataDeletionResponse | null>(null);
-
-  const loadPublicDocs = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const [policy, deletion] = await Promise.all([
-        facebookApi.privacyPolicy(),
-        facebookApi.dataDeletionInstructions(),
-      ]);
-      setPrivacyPolicy(policy);
-      setDataDeletionInstructions(deletion);
-    } catch (loadError) {
-      setError(loadError instanceof Error ? loadError.message : 'Không tải được policy/data deletion');
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    const timeoutId = window.setTimeout(() => void loadPublicDocs(), 0);
-    return () => window.clearTimeout(timeoutId);
-  }, [loadPublicDocs]);
 
   const submitDataDeletion = async () => {
     setIsSubmitting(true);
@@ -168,9 +144,6 @@ export const AppReviewTools = () => {
               Xem trang đầy đủ
             </Link>
           </div>
-          <p className="mt-4 rounded-md bg-surface-container-low p-3 text-sm text-text-secondary">
-            {privacyPolicy || 'Chưa tải dữ liệu'}
-          </p>
         </article>
 
         <article className="rounded-md border border-border-base bg-surface-container-lowest p-5 shadow-sm">
@@ -186,18 +159,8 @@ export const AppReviewTools = () => {
               Xem trang đầy đủ
             </Link>
           </div>
-          <p className="mt-4 rounded-md bg-surface-container-low p-3 text-sm text-text-secondary">
-            {dataDeletionInstructions || 'Chưa tải dữ liệu'}
-          </p>
         </article>
       </section>
-
-      <div className="flex justify-end">
-        <Button variant="outline" className="gap-2" onClick={() => void loadPublicDocs()} disabled={isLoading}>
-          <RefreshCw className={isLoading ? 'h-4 w-4 animate-spin' : 'h-4 w-4'} />
-          Tải lại policy
-        </Button>
-      </div>
 
 
     </div>

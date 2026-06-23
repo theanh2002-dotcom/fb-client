@@ -99,9 +99,13 @@ export const ManagePosts = () => {
           </div>
         ) : (
           <div className="space-y-space-4">
-            {posts.map((post) => (
-              <div key={post.id} className="bg-surface-muted border border-border-base rounded-xl overflow-hidden shadow-sm">
-                <div className="p-space-4">
+            {posts.map((post) => {
+              const pubTime = new Date((post as any).publishedAt || (post as any).published_at || 0).getTime();
+              const isNew = !isNaN(pubTime) && (new Date().getTime() - pubTime < 600000); // Dưới 10 phút coi là mới
+              
+              return (
+                <div key={post.id} className="bg-surface-muted border border-border-base rounded-xl overflow-hidden shadow-sm">
+                  <div className="p-space-4">
                   {/* Card Header */}
                   <div className="flex items-center justify-between mb-space-3">
                     <div className="flex items-center gap-space-3">
@@ -161,21 +165,22 @@ export const ManagePosts = () => {
                     <div className="flex gap-space-4">
                       <div className="flex items-center gap-space-1 text-text-secondary">
                         <span className="material-symbols-outlined text-[20px]" data-icon="thumb_up">thumb_up</span>
-                        <span className="text-body-md font-medium">{Math.floor(Math.random() * 50) + 5} Thích</span>
+                        <span className="text-body-md font-medium">{isNew ? 0 : Math.floor(Math.random() * 50) + 5} Thích</span>
                       </div>
                       <div className="flex items-center gap-space-1 text-text-secondary">
                         <span className="material-symbols-outlined text-[20px]" data-icon="chat_bubble">chat_bubble</span>
-                        <span className="text-body-md font-medium">{Math.floor(Math.random() * 20)} Bình luận</span>
+                        <span className="text-body-md font-medium">{isNew ? 0 : Math.floor(Math.random() * 20)} Bình luận</span>
                       </div>
                       <div className="flex items-center gap-space-1 text-text-secondary">
                         <span className="material-symbols-outlined text-[20px]" data-icon="share">share</span>
-                        <span className="text-body-md font-medium">{Math.floor(Math.random() * 10)} Chia sẻ</span>
+                        <span className="text-body-md font-medium">{isNew ? 0 : Math.floor(Math.random() * 10)} Chia sẻ</span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         )}
 
