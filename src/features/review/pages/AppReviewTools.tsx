@@ -37,7 +37,6 @@ const reviewerSteps = [
   'Confirm the connected Page has no missing permissions.',
   'Create a test post, then verify it in Manage Posts.',
   'Open Inbox, select a conversation, and send a test reply.',
-  'Open this Review page and submit a sample data deletion request.',
 ];
 
 export const AppReviewTools = () => {
@@ -216,72 +215,7 @@ export const AppReviewTools = () => {
         </Button>
       </div>
 
-      <section className="rounded-md border border-border-base bg-surface-container-lowest p-5 shadow-sm">
-        <div className="flex items-center gap-2">
-          <Trash2 className="h-5 w-5 text-error" />
-          <h2 className="font-semibold text-text-primary">Gửi data deletion request</h2>
-        </div>
-        <p className="mt-2 text-sm text-text-secondary">
-          Form này gọi trực tiếp `POST /api/data-deletion` bằng JSON public, tương ứng flow test trong Postman.
-        </p>
 
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
-          <label className="text-sm font-medium text-text-primary">
-            Requester email
-            <input
-              className="mt-2 h-10 w-full rounded-md border border-border-base bg-surface-container-lowest px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              value={requesterEmail}
-              onChange={(event) => setRequesterEmail(event.target.value)}
-              placeholder="reviewer@example.com"
-            />
-          </label>
-          <label className="text-sm font-medium text-text-primary">
-            Facebook user id
-            <input
-              className="mt-2 h-10 w-full rounded-md border border-border-base bg-surface-container-lowest px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              value={fbUserId}
-              onChange={(event) => setFbUserId(event.target.value)}
-              placeholder="test-fb-user"
-            />
-          </label>
-          <label className="text-sm font-medium text-text-primary">
-            Facebook page id
-            <input
-              className="mt-2 h-10 w-full rounded-md border border-border-base bg-surface-container-low px-3 text-sm text-text-secondary"
-              value={selectedPage?.fbPageId ?? ''}
-              readOnly
-              placeholder="Chưa chọn Fanpage"
-            />
-          </label>
-          <label className="text-sm font-medium text-text-primary">
-            Note
-            <input
-              className="mt-2 h-10 w-full rounded-md border border-border-base bg-surface-container-lowest px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              value={note}
-              onChange={(event) => setNote(event.target.value)}
-            />
-          </label>
-        </div>
-
-        <div className="mt-5 flex justify-end">
-          <Button className="gap-2" onClick={() => void submitDataDeletion()} disabled={isSubmitting}>
-            {isSubmitting ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
-            Gửi request
-          </Button>
-        </div>
-
-        {result && (
-          <div className="mt-5 rounded-md border border-secondary-container bg-secondary-container p-4 text-sm text-on-secondary-container">
-            <p className="font-semibold">Data deletion received</p>
-            <div className="mt-2 grid gap-1">
-              <span>Request ID: {result.requestId}</span>
-              <span>Status: {result.status}</span>
-              <span>Confirmation code: {result.confirmationCode}</span>
-              <span>Message: {result.message}</span>
-            </div>
-          </div>
-        )}
-      </section>
     </div>
   );
 };
