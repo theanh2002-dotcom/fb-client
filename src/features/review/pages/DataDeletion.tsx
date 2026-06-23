@@ -4,6 +4,7 @@ import { Button } from '../../../components/ui/Button';
 import { API_BASE_URL } from '../../../shared/api/httpClient';
 import { facebookApi } from '../../../shared/api/facebookApi';
 import type { FacebookDataDeletionResponse } from '../../../shared/api/types';
+import { ArrowLeft } from 'lucide-react';
 
 export const DataDeletion = () => {
   const [requesterEmail, setRequesterEmail] = useState('');
@@ -37,9 +38,21 @@ export const DataDeletion = () => {
 
   return (
     <main className="min-h-screen bg-surface-base px-6 py-10 text-text-primary">
+      <div className="mx-auto mb-6 max-w-3xl">
+        <Link
+          to="/review"
+          className="inline-flex items-center gap-2 text-sm font-medium text-text-secondary transition-colors hover:text-primary"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to App Review
+        </Link>
+      </div>
       <section className="mx-auto max-w-3xl space-y-6 rounded-xl border border-border-base bg-surface-muted p-6 shadow-sm">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-primary">ezitalent Facebook Service</p>
+          <div className="flex items-center gap-3">
+            <img src="/image.png" alt="ezitalent logo" className="h-8 w-8 rounded-md object-contain" />
+            <p className="text-sm font-semibold uppercase tracking-wide text-primary">ezitalent Facebook Service</p>
+          </div>
           <h1 className="mt-2 text-3xl font-bold">Data Deletion Instructions</h1>
           <p className="mt-2 text-sm text-text-secondary">Use this page to request deletion of Facebook Page data processed by this service.</p>
         </div>

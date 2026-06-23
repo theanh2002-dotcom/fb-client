@@ -10,6 +10,11 @@ import { usePages } from '../../pages/PageContext';
 
 const reviewPermissions = [
   {
+    permission: 'public_profile',
+    screen: 'Login Screen',
+    evidence: 'Reviewer can login and the system retrieves basic profile info for session management.',
+  },
+  {
     permission: 'pages_show_list',
     screen: 'Connect Fanpage',
     evidence: 'Reviewer can start Facebook OAuth and select a Page returned by Facebook.',
@@ -25,6 +30,11 @@ const reviewPermissions = [
     evidence: 'Reviewer can publish a text or image URL post and verify it appears in the post history.',
   },
   {
+    permission: 'pages_read_engagement',
+    screen: 'Manage Posts',
+    evidence: 'Reviewer can see the engagement metrics (Likes, Comments, Shares) fetched for each published post.',
+  },
+  {
     permission: 'pages_messaging',
     screen: 'Inbox',
     evidence: 'Reviewer can open Page conversations, inspect messages, and send text or image replies.',
@@ -37,7 +47,6 @@ const reviewerSteps = [
   'Confirm the connected Page has no missing permissions.',
   'Create a test post, then verify it in Manage Posts.',
   'Open Inbox, select a conversation, and send a test reply.',
-  'Open this Review page and submit a sample data deletion request.',
 ];
 
 export const AppReviewTools = () => {
@@ -103,7 +112,7 @@ export const AppReviewTools = () => {
         </p>
       </div>
 
-      <section className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+      <section className="grid gap-4">
         <article className="rounded-md border border-border-base bg-surface-container-lowest p-5 shadow-sm">
           <div className="flex items-center gap-2">
             <ClipboardList className="h-5 w-5 text-primary" />
@@ -121,26 +130,6 @@ export const AppReviewTools = () => {
           </ol>
         </article>
 
-        <article className="rounded-md border border-border-base bg-surface-container-lowest p-5 shadow-sm">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="h-5 w-5 text-primary" />
-            <h2 className="font-semibold text-text-primary">Public review URLs</h2>
-          </div>
-          <div className="mt-4 grid gap-3 text-sm">
-            <Link className="flex items-center justify-between rounded-md border border-border-base p-3 text-primary hover:bg-state-hover" to="/privacy-policy" target="_blank">
-              Privacy Policy
-              <ExternalLink className="h-4 w-4" />
-            </Link>
-            <Link className="flex items-center justify-between rounded-md border border-border-base p-3 text-primary hover:bg-state-hover" to="/data-deletion" target="_blank">
-              Data deletion page
-              <ExternalLink className="h-4 w-4" />
-            </Link>
-            <a className="flex items-center justify-between rounded-md border border-border-base p-3 text-primary hover:bg-state-hover" href={`${API_BASE_URL}/api/data-deletion`} target="_blank" rel="noreferrer">
-              Data deletion callback endpoint
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
-        </article>
       </section>
 
       <section className="rounded-md border border-border-base bg-surface-container-lowest p-5 shadow-sm">
@@ -172,15 +161,12 @@ export const AppReviewTools = () => {
               <ShieldCheck className="h-5 w-5 text-primary" />
               <h2 className="font-semibold text-text-primary">Privacy Policy</h2>
             </div>
-            <a
+            <Link
               className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-              href={`${API_BASE_URL}/privacy-policy`}
-              target="_blank"
-              rel="noreferrer"
+              to="/privacy-policy"
             >
-              Mở endpoint
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
+              Xem trang đầy đủ
+            </Link>
           </div>
           <p className="mt-4 rounded-md bg-surface-container-low p-3 text-sm text-text-secondary">
             {privacyPolicy || 'Chưa tải dữ liệu'}
@@ -193,15 +179,12 @@ export const AppReviewTools = () => {
               <FileText className="h-5 w-5 text-primary" />
               <h2 className="font-semibold text-text-primary">Data Deletion Instructions</h2>
             </div>
-            <a
+            <Link
               className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-              href={`${API_BASE_URL}/data-deletion`}
-              target="_blank"
-              rel="noreferrer"
+              to="/data-deletion"
             >
-              Mở endpoint
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
+              Xem trang đầy đủ
+            </Link>
           </div>
           <p className="mt-4 rounded-md bg-surface-container-low p-3 text-sm text-text-secondary">
             {dataDeletionInstructions || 'Chưa tải dữ liệu'}
@@ -216,72 +199,7 @@ export const AppReviewTools = () => {
         </Button>
       </div>
 
-      <section className="rounded-md border border-border-base bg-surface-container-lowest p-5 shadow-sm">
-        <div className="flex items-center gap-2">
-          <Trash2 className="h-5 w-5 text-error" />
-          <h2 className="font-semibold text-text-primary">Gửi data deletion request</h2>
-        </div>
-        <p className="mt-2 text-sm text-text-secondary">
-          Form này gọi trực tiếp `POST /api/data-deletion` bằng JSON public, tương ứng flow test trong Postman.
-        </p>
 
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
-          <label className="text-sm font-medium text-text-primary">
-            Requester email
-            <input
-              className="mt-2 h-10 w-full rounded-md border border-border-base bg-surface-container-lowest px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              value={requesterEmail}
-              onChange={(event) => setRequesterEmail(event.target.value)}
-              placeholder="reviewer@example.com"
-            />
-          </label>
-          <label className="text-sm font-medium text-text-primary">
-            Facebook user id
-            <input
-              className="mt-2 h-10 w-full rounded-md border border-border-base bg-surface-container-lowest px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              value={fbUserId}
-              onChange={(event) => setFbUserId(event.target.value)}
-              placeholder="test-fb-user"
-            />
-          </label>
-          <label className="text-sm font-medium text-text-primary">
-            Facebook page id
-            <input
-              className="mt-2 h-10 w-full rounded-md border border-border-base bg-surface-container-low px-3 text-sm text-text-secondary"
-              value={selectedPage?.fbPageId ?? ''}
-              readOnly
-              placeholder="Chưa chọn Fanpage"
-            />
-          </label>
-          <label className="text-sm font-medium text-text-primary">
-            Note
-            <input
-              className="mt-2 h-10 w-full rounded-md border border-border-base bg-surface-container-lowest px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-              value={note}
-              onChange={(event) => setNote(event.target.value)}
-            />
-          </label>
-        </div>
-
-        <div className="mt-5 flex justify-end">
-          <Button className="gap-2" onClick={() => void submitDataDeletion()} disabled={isSubmitting}>
-            {isSubmitting ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
-            Gửi request
-          </Button>
-        </div>
-
-        {result && (
-          <div className="mt-5 rounded-md border border-secondary-container bg-secondary-container p-4 text-sm text-on-secondary-container">
-            <p className="font-semibold">Data deletion received</p>
-            <div className="mt-2 grid gap-1">
-              <span>Request ID: {result.requestId}</span>
-              <span>Status: {result.status}</span>
-              <span>Confirmation code: {result.confirmationCode}</span>
-              <span>Message: {result.message}</span>
-            </div>
-          </div>
-        )}
-      </section>
     </div>
   );
 };

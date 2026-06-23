@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../features/auth/AuthContext';
 import { usePages } from '../../features/pages/PageContext';
@@ -6,8 +7,21 @@ export const Header = () => {
   const navigate = useNavigate();
   const { logout, user } = useAuth();
   const { pages, selectedPageId, selectPage, refreshPages, isLoadingPages } = usePages();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleLogout = async () => {
+    setIsMenuOpen(false);
     await logout();
     navigate('/login', { replace: true });
   };
@@ -57,11 +71,29 @@ export const Header = () => {
         
         <div className="h-8 w-[1px] bg-border-base mx-space-1"></div>
         
-        <div className="flex items-center gap-space-2 cursor-pointer group" onClick={() => void handleLogout()} title="Dang xuat">
-          <span className="font-body-md text-body-md font-medium group-hover:text-text-accent transition-colors">{user?.name ?? 'Hoàng Văn Bảo'}</span>
-          <div className="w-8 h-8 rounded-full overflow-hidden border border-border-base flex items-center justify-center bg-primary-container text-on-primary-container text-sm font-bold">
-            {(user?.name ?? 'H').charAt(0).toUpperCase()}
+        <div className="relative" ref={menuRef}>
+          <div className="flex items-center gap-space-2 cursor-pointer group" onClick={() => setIsMenuOpen(!isMenuOpen)} title="Tài khoản">
+            <span className="font-body-md text-body-md font-medium group-hover:text-text-accent transition-colors">{user?.name ?? 'Admin'}</span>
+            <div className="w-8 h-8 rounded-full overflow-hidden border border-border-base flex items-center justify-center bg-primary-container text-on-primary-container text-sm font-bold">
+              {(user?.name ?? 'A').charAt(0).toUpperCase()}
+            </div>
           </div>
+          
+          {isMenuOpen && (
+            <div className="absolute right-0 mt-2 w-56 bg-surface-base rounded-xl shadow-lg shadow-black/5 border border-border-base py-2 z-50 animate-in fade-in slide-in-from-top-2">
+              <div className="px-4 py-2 border-b border-border-base mb-2">
+                <p className="text-sm font-bold text-text-primary truncate">{user?.name}</p>
+                <p className="text-xs text-text-secondary truncate mt-0.5">{user?.username}</p>
+              </div>
+              <button 
+                onClick={() => void handleLogout()}
+                className="w-full text-left px-4 py-2 text-sm text-error hover:bg-error/10 transition-colors flex items-center gap-2 font-medium"
+              >
+                <span className="material-symbols-outlined text-[20px]">logout</span>
+                Đăng xuất
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>

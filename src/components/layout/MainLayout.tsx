@@ -16,9 +16,12 @@ export const MainLayout = ({ children, noPadding = false }: { children: React.Re
       </main>
       {!noPadding && (
         <footer className="ml-sidebar-width bg-surface-base border-t border-border-base py-space-2 px-gutter flex justify-between items-center mt-auto shrink-0">
-          <div className="flex items-center gap-space-2">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
+              <img src="/image.png" alt="ezitalent logo" className="h-5 w-5 rounded-md object-contain" />
               <span className="font-label-xs text-label-xs font-bold text-on-surface uppercase tracking-tight">ezitalent</span>
-              <span className="font-body-sm text-body-sm text-secondary">© 2024 ezitalent. All rights reserved.</span>
+            </div>
+            <span className="font-body-sm text-body-sm text-secondary">© 2024 ezitalent. All rights reserved.</span>
           </div>
           <div className="flex gap-space-4">
               <a href="#" className="font-body-sm text-body-sm text-secondary hover:text-primary transition-all">Privacy Policy</a>

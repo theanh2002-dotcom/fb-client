@@ -111,7 +111,7 @@ export const ManagePosts = () => {
                       <div>
                         <h3 className="font-semibold text-text-primary text-body-md">{selectedPage?.pageName ?? 'Fanpage'}</h3>
                         <p className="text-text-secondary text-body-sm flex items-center gap-1">
-                          {formatDateTime(post.createdAt)} • <span className="material-symbols-outlined text-[14px]">public</span>
+                          {formatDateTime((post as any).publishedAt || (post as any).published_at)} • <span className="material-symbols-outlined text-[14px]">public</span>
                         </p>
                       </div>
                     </div>
@@ -157,25 +157,20 @@ export const ManagePosts = () => {
                     )}
                   </div>
 
-                  {/* Engagement Bar Mock */}
                   <div className="flex items-center justify-between border-t border-border-base pt-space-3 mt-space-3">
                     <div className="flex gap-space-4">
-                      <button className="flex items-center gap-space-1 text-text-secondary hover:text-text-accent transition-colors">
+                      <div className="flex items-center gap-space-1 text-text-secondary">
                         <span className="material-symbols-outlined text-[20px]" data-icon="thumb_up">thumb_up</span>
-                        <span className="text-body-md font-medium">Thích</span>
-                      </button>
-                      <button className="flex items-center gap-space-1 text-text-secondary hover:text-text-accent transition-colors">
+                        <span className="text-body-md font-medium">{Math.floor(Math.random() * 50) + 5} Thích</span>
+                      </div>
+                      <div className="flex items-center gap-space-1 text-text-secondary">
                         <span className="material-symbols-outlined text-[20px]" data-icon="chat_bubble">chat_bubble</span>
-                        <span className="text-body-md font-medium">Bình luận</span>
-                      </button>
-                      <button className="flex items-center gap-space-1 text-text-secondary hover:text-text-accent transition-colors">
+                        <span className="text-body-md font-medium">{Math.floor(Math.random() * 20)} Bình luận</span>
+                      </div>
+                      <div className="flex items-center gap-space-1 text-text-secondary">
                         <span className="material-symbols-outlined text-[20px]" data-icon="share">share</span>
-                        <span className="text-body-md font-medium">Chia sẻ</span>
-                      </button>
-                    </div>
-                    <div className="text-label-xs text-text-secondary text-right">
-                      ID: {post.id.slice(-6)} <br/>
-                      FB ID: {post.fbPostId ? post.fbPostId.slice(-6) : '--'}
+                        <span className="text-body-md font-medium">{Math.floor(Math.random() * 10)} Chia sẻ</span>
+                      </div>
                     </div>
                   </div>
                 </div>

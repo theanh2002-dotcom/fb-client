@@ -15,9 +15,11 @@ export const Sidebar = () => {
   
   return (
     <aside className="fixed left-0 top-0 h-full w-sidebar-width bg-surface-muted border-r border-border-base flex flex-col gap-space-2 p-space-3 z-50">
-      <div className="mb-space-5 px-space-2">
-        <h1 className="font-display-lg text-display-lg font-bold text-on-surface">ezitalent</h1>
-        <p className="font-body-md text-body-md text-text-secondary">Management</p>
+      <div className="mb-space-5 px-space-2 flex flex-col justify-center">
+        <div className="flex items-center gap-3">
+          <img src="/image.png" alt="ezitalent logo" className="h-8 w-8 rounded-md object-contain" />
+          <h1 className="font-display-lg text-display-lg font-bold text-on-surface">ezitalent</h1>
+        </div>
       </div>
 
       <nav className="flex flex-col gap-space-1 overflow-y-auto flex-1">

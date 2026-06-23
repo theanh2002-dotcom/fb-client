@@ -35,8 +35,11 @@ export const Login = () => {
       <main className="w-full max-w-[400px] bg-surface-muted border border-border-base rounded-xl shadow-sm p-space-5 md:p-space-6 flex flex-col items-center">
         {/* Brand / Logo */}
         <div className="mb-space-6 flex flex-col items-center">
-          <span className="font-display-lg text-display-lg text-primary tracking-tight">ezitalent</span>
-          <div className="h-1 w-8 bg-text-accent mt-2 rounded-full opacity-80"></div>
+          <div className="mb-2 flex items-center gap-3">
+            <img src="/image.png" alt="ezitalent logo" className="h-10 w-10 rounded-md object-contain" />
+            <span className="font-display-lg text-display-lg tracking-tight text-primary">ezitalent</span>
+          </div>
+          <div className="mt-2 h-1 w-8 rounded-full bg-text-accent opacity-80"></div>
         </div>
 
         {/* Title */}
