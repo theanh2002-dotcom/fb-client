@@ -6,8 +6,8 @@ import { useToast } from '../../../shared/context/ToastContext';
 export const Login = () => {
   const navigate = useNavigate();
   const { isAuthenticated, isBootstrapping, login } = useAuth();
-  const [email, setEmail] = useState('reviewer@ezisolutions.tech');
-  const [password, setPassword] = useState('reviewer-password');
+  const [email, setEmail] = useState('admin@ezi.vn');
+  const [password, setPassword] = useState('123456');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { addToast } = useToast();
 

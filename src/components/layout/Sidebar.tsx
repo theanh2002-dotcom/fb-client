@@ -8,6 +8,7 @@ const navItems = [
   { name: 'Tạo bài viết', icon: 'add_circle', path: '/create' },
   { name: 'Kết nối Fanpage', icon: 'hub', path: '/connect' },
   { name: 'App Review', icon: 'fact_check', path: '/review' },
+  { name: 'Quảng cáo FB', icon: 'campaign', path: '/ads' },
 ];
 
 export const Sidebar = () => {

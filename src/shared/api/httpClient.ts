@@ -21,10 +21,15 @@ type RequestOptions = Omit<RequestInit, 'body'> & {
 async function request<T>(path: string, options: RequestOptions = {}): Promise<T> {
   const headers = new Headers(options.headers);
   const token = localStorage.getItem(AUTH_TOKEN_KEY);
+  const isFormData = typeof FormData !== 'undefined' && options.body instanceof FormData;
+  let requestBody: BodyInit | undefined;
+  if (options.body !== undefined) {
+    requestBody = isFormData ? (options.body as FormData) : JSON.stringify(options.body);
+  }
 
   headers.set('ngrok-skip-browser-warning', 'true');
 
-  if (!headers.has('Content-Type') && options.body !== undefined) {
+  if (!headers.has('Content-Type') && options.body !== undefined && !isFormData) {
     headers.set('Content-Type', 'application/json');
   }
   if (!options.skipAuth && token) {
@@ -36,7 +41,7 @@ async function request<T>(path: string, options: RequestOptions = {}): Promise<T
     response = await fetch(`${API_BASE_URL}${path}`, {
       ...options,
       headers,
-      body: options.body === undefined ? undefined : JSON.stringify(options.body),
+      body: requestBody,
     });
   } catch (error) {
     throw new ApiError(

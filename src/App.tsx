@@ -12,6 +12,8 @@ import { OAuthCallback } from './features/connect/pages/OAuthCallback';
 import { AppReviewTools } from './features/review/pages/AppReviewTools';
 import { PrivacyPolicy } from './features/review/pages/PrivacyPolicy';
 import { DataDeletion } from './features/review/pages/DataDeletion';
+import { AdsDashboard } from './features/ads/pages/AdsDashboard';
+import { CreateCampaign } from './features/ads/pages/CreateCampaign';
 
 const AppLayout = ({ noPadding = false }) => (
   <MainLayout noPadding={noPadding}>
@@ -51,6 +53,8 @@ export default function App() {
                   <Route path="/create" element={<CreatePost />} />
                   <Route path="/connect" element={<ConnectFanpage />} />
                   <Route path="/review" element={<AppReviewTools />} />
+                  <Route path="/ads" element={<AdsDashboard />} />
+                  <Route path="/ads/create" element={<CreateCampaign />} />
                 </Route>
                 <Route element={<AppLayout noPadding />}>
                   <Route path="/messages" element={<Inbox />} />

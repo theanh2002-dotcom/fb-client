@@ -1,12 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
-import { CheckCircle2, ClipboardList, ExternalLink, FileText, RefreshCw, ShieldCheck, Trash2 } from 'lucide-react';
+import { CheckCircle2, ClipboardList, FileText, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Button } from '../../../components/ui/Button';
-import { API_BASE_URL } from '../../../shared/api/httpClient';
-import { facebookApi } from '../../../shared/api/facebookApi';
-import type { FacebookDataDeletionResponse } from '../../../shared/api/types';
-import { useAuth } from '../../auth/AuthContext';
-import { usePages } from '../../pages/PageContext';
 
 const reviewPermissions = [
   {
@@ -50,34 +43,6 @@ const reviewerSteps = [
 ];
 
 export const AppReviewTools = () => {
-  const { user } = useAuth();
-  const { selectedPage } = usePages();
-  const [requesterEmail, setRequesterEmail] = useState(user?.username ?? '');
-  const [fbUserId, setFbUserId] = useState('');
-  const [note, setNote] = useState('Frontend App Review data deletion test');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<FacebookDataDeletionResponse | null>(null);
-
-  const submitDataDeletion = async () => {
-    setIsSubmitting(true);
-    setError(null);
-    setResult(null);
-    try {
-      const response = await facebookApi.submitDataDeletion({
-        requesterEmail: requesterEmail.trim() || user?.username || '',
-        fbUserId: fbUserId.trim(),
-        fbPageId: selectedPage?.fbPageId ?? '',
-        note: note.trim(),
-      });
-      setResult(response);
-    } catch (submitError) {
-      setError(submitError instanceof Error ? submitError.message : 'Không gửi được data deletion request');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <div className="mx-auto max-w-6xl space-y-6">
@@ -124,11 +89,7 @@ export const AppReviewTools = () => {
         </div>
       </section>
 
-      {error && (
-        <div className="rounded-md border border-error-container bg-error-container p-3 text-sm text-on-error-container">
-          {error}
-        </div>
-      )}
+
 
       <section className="grid gap-4 lg:grid-cols-2">
         <article className="rounded-md border border-border-base bg-surface-container-lowest p-5 shadow-sm">

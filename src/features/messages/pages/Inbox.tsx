@@ -14,7 +14,7 @@ export const Inbox = () => {
   const [selectedConversationId, setSelectedConversationId] = useState<string | null>(null);
   const [search, setSearch] = useState('');
   const [draft, setDraft] = useState('');
-  const [messageType, setMessageType] = useState<'TEXT' | 'IMAGE'>('TEXT');
+  const [messageType] = useState<'TEXT' | 'IMAGE'>('TEXT');
   const [isLoadingConversations, setIsLoadingConversations] = useState(false);
   const [isLoadingMessages, setIsLoadingMessages] = useState(false);
   const [isSending, setIsSending] = useState(false);
